@@ -16,7 +16,7 @@ namespace Datos
     {
         public int ID_REG { get; set; }
         public int ID_SENSOR { get; set; }
-        public Nullable<double> MEDICION { get; set; }
-        public string FECHAYHORA { get; set; }
+        public double MEDICION { get; set; }
+        public System.DateTime FECHAYHORA { get; set; }
     }
 }

@@ -11,8 +11,8 @@
           </Key>
           <Property Name="ID_REG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ID_SENSOR" Type="int" Nullable="false" />
-          <Property Name="MEDICION" Type="float" />
-          <Property Name="FECHAYHORA" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MEDICION" Type="float" Nullable="false" />
+          <Property Name="FECHAYHORA" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityContainer Name="DatosModelStoreContainer">
           <EntitySet Name="SensorDevice" EntityType="Self.SensorDevice" Schema="dbo" store:Type="Tables" />
@@ -30,8 +30,8 @@
           </Key>
           <Property Name="ID_REG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ID_SENSOR" Type="Int32" Nullable="false" />
-          <Property Name="MEDICION" Type="Double" />
-          <Property Name="FECHAYHORA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MEDICION" Type="Double" Nullable="false" />
+          <Property Name="FECHAYHORA" Type="DateTime" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>

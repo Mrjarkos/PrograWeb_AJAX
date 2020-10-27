@@ -1,19 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DatosModelStoreContainer" CdmEntityContainer="DatosEntities">
-    <EntitySetMapping Name="USUARIOS">
-      <EntityTypeMapping TypeName="DatosModel.USUARIO">
-        <MappingFragment StoreEntitySet="USUARIOS">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="ROL" ColumnName="ROL" />
-          <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-          <ScalarProperty Name="CORREO" ColumnName="CORREO" />
-          <ScalarProperty Name="DOC_TYPE" ColumnName="DOC_TYPE" />
-          <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
-          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="SensorDevice">
       <EntityTypeMapping TypeName="DatosModel.SensorDevice">
         <MappingFragment StoreEntitySet="SensorDevice">

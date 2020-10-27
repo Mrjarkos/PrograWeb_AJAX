@@ -25,7 +25,7 @@ namespace Server.Controllers
                     {
                         ID_SENSOR = respuesta.Id,
                         MEDICION = Numero,
-                        FECHAYHORA = respuesta.FECHAYHORA.ToString(),
+                        FECHAYHORA = respuesta.FECHAYHORA,
                     });
                     context.SaveChanges();
                 }
@@ -55,7 +55,7 @@ namespace Server.Controllers
                             ID_REG = u.ID_REG,
                             ID_SENSOR = u.ID_SENSOR,
                             MEDICION = (float)u.MEDICION,
-                            FECHAYHORA = DateTime.Parse(u.FECHAYHORA)
+                            FECHAYHORA = u.FECHAYHORA
                         });
                     }
                 }
@@ -67,6 +67,22 @@ namespace Server.Controllers
             }
             var r = View("index", modelo);
             return r;
+        }
+
+        [HttpGet]
+        public string GetDateTime(int id)
+        {
+            try
+            {
+
+                var autorizatedID = new List<int> { 33, 22, 11, 99 };
+                if (!autorizatedID.Exists(X => X == id)) throw new Exception("Device: ID Desconocido");
+                return DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+            }
+            catch (Exception ex)
+            {
+                return "ERROR:" + ex.Message;
+            }
         }
     }
 }

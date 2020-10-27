@@ -10,3 +10,13 @@ D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\Bootstrap_PrograWeb\Dat
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\Bootstrap_PrograWeb\Datos\obj\Release\Datos.csproj.CopyComplete
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\Bootstrap_PrograWeb\Datos\obj\Release\Datos.dll
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\Bootstrap_PrograWeb\Datos\obj\Release\Datos.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\bin\Release\Datos.dll.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\bin\Release\Datos.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\bin\Release\Datos.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\bin\Release\EntityFramework.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\bin\Release\EntityFramework.SqlServer.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Release\Datos.csprojAssemblyReference.cache
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Release\Datos.csproj.CoreCompileInputs.cache
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Release\Datos.csproj.CopyComplete
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Release\Datos.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Release\Datos.pdb
