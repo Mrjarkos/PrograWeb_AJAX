@@ -1,0 +1,120 @@
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\Server.dll.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\Server.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\Server.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\csc.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\csc.exe.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\csc.rsp
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\csi.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\csi.exe.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\csi.rsp
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\System.Buffers.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\System.Collections.Immutable.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\System.Memory.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\System.Numerics.Vectors.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\System.Reflection.Metadata.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\vbc.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\vbc.exe.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\vbc.rsp
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\VBCSCompiler.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\roslyn\VBCSCompiler.exe.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\Datos.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\EntityFramework.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\EntityFramework.SqlServer.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\Microsoft.Web.Infrastructure.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Helpers.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Mvc.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Razor.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Webpages.Deployment.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Webpages.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Webpages.Razor.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\Datos.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\Datos.dll.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\EntityFramework.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\EntityFramework.SqlServer.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Razor.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Webpages.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Webpages.Deployment.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Webpages.Razor.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Helpers.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\bin\System.Web.Mvc.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\obj\Debug\Server.csprojAssemblyReference.cache
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\obj\Debug\Server.csproj.CopyComplete
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\obj\Debug\Server.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\04 - AJAX y Paginacion\Server\obj\Debug\Server.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\obj\Debug\Server.csprojAssemblyReference.cache
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\obj\Debug\Server.csproj.CoreCompileInputs.cache
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\obj\Debug\Server.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\obj\Debug\Server.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Server.dll.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Server.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Server.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\csc.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\csc.exe.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\csc.rsp
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\csi.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\csi.exe.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\csi.rsp
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\System.Buffers.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\System.Collections.Immutable.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\System.Memory.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\System.Numerics.Vectors.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\System.Reflection.Metadata.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\System.Runtime.CompilerServices.Unsafe.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\vbc.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\vbc.exe.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\vbc.rsp
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\VBCSCompiler.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\roslyn\VBCSCompiler.exe.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Datos.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\EntityFramework.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\EntityFramework.SqlServer.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Microsoft.Web.Infrastructure.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Helpers.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Mvc.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Razor.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Webpages.Deployment.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Webpages.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Webpages.Razor.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Datos.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Datos.dll.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\EntityFramework.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\EntityFramework.SqlServer.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Razor.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Webpages.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Webpages.Deployment.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Webpages.Razor.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Helpers.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Web.Mvc.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\obj\Debug\Server.csproj.CopyComplete
