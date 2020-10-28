@@ -84,5 +84,48 @@ namespace Server.Controllers
                 return "ERROR:" + ex.Message;
             }
         }
+
+        public JsonResult GetRegister()
+        {
+            string id_search = Request.QueryString["id_search"];
+            string id_sensor_search = Request.QueryString["id_sensor_search"];
+            string medicion_search = Request.QueryString["medicion_search"];
+            string Fecha_search = Request.QueryString["Fecha_search"];
+            bool Contain=false;
+
+            var modelo = new Models.SensorView();
+            modelo.sensores = new List<Models.Sensor>();
+            ViewBag.error = false;
+            try
+            {
+                using (var context = new Datos.DatosEntities())
+                {
+                    var us = context.SensorDevice.ToArray();
+                    foreach (var u in us)
+                    {
+                        Contain = u.ID_REG.ToString().Contains(id_search) && u.ID_SENSOR.ToString().Contains(id_sensor_search) && u.MEDICION.ToString().Contains(medicion_search) && u.FECHAYHORA.ToString().Contains(Fecha_search);
+                        if (Contain)
+                        {
+                            modelo.sensores.Add(new Models.Sensor
+                            {
+                                ID_REG = u.ID_REG,
+                                ID_SENSOR = u.ID_SENSOR,
+                                MEDICION = (float)u.MEDICION,
+                                FECHAYHORA = u.FECHAYHORA
+                            });
+                        }
+                        
+                        
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.error = true;
+                ViewBag.mensaje = "Error:" + ex.Message.ToString();
+            }
+            return Json(modelo, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

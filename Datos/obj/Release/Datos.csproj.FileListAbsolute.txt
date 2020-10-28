@@ -20,3 +20,13 @@ D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\ob
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Release\Datos.csproj.CopyComplete
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Release\Datos.dll
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Release\Datos.pdb
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Release\Datos.dll.config
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Release\Datos.dll
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Release\Datos.pdb
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Release\EntityFramework.xml
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Release\EntityFramework.SqlServer.xml
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Release\Datos.csprojAssemblyReference.cache
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Release\Datos.csproj.CoreCompileInputs.cache
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Release\Datos.csproj.CopyComplete
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Release\Datos.dll
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Release\Datos.pdb

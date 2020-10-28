@@ -32,3 +32,13 @@ D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\ob
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Debug\Datos.csproj.CopyComplete
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Debug\Datos.dll
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Datos\obj\Debug\Datos.pdb
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Debug\Datos.dll.config
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Debug\Datos.dll
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Debug\Datos.pdb
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Debug\EntityFramework.xml
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Debug\Datos.csprojAssemblyReference.cache
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Debug\Datos.csproj.CoreCompileInputs.cache
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Debug\Datos.csproj.CopyComplete
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Debug\Datos.dll
+C:\Users\willi\Source\Repos\PrograWeb_AJAX\Datos\obj\Debug\Datos.pdb
