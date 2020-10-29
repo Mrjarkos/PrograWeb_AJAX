@@ -9,6 +9,11 @@ namespace Server.Controllers
 {
     public class SensorController : Controller
     {
+        public ActionResult Index()
+        {
+            return View();
+        }
+
         [HttpPost]
         public string PostData(int id, float MEDICION)
         {
@@ -35,38 +40,6 @@ namespace Server.Controllers
             {
                 return "Error: " + ex.Message;
             }
-        }
-
-        [HttpGet]
-        public ActionResult ShowRegister()
-        {
-            var modelo = new Models.SensorView();
-            modelo.sensores = new List<Models.Sensor>();
-            ViewBag.error = false;
-            try
-            {
-                using (var context = new Datos.DatosEntities())
-                {
-                    var us = context.SensorDevice.ToArray();
-                    foreach (var u in us)
-                    {
-                        modelo.sensores.Add(new Models.Sensor
-                        {
-                            ID_REG = u.ID_REG,
-                            ID_SENSOR = u.ID_SENSOR,
-                            MEDICION = (float)u.MEDICION,
-                            FECHAYHORA = u.FECHAYHORA
-                        });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ViewBag.error = true;
-                ViewBag.mensaje = "Error:" + ex.Message.ToString();
-            }
-            var r = View("index", modelo);
-            return r;
         }
 
         [HttpGet]
@@ -103,7 +76,10 @@ namespace Server.Controllers
                     var us = context.SensorDevice.ToArray();
                     foreach (var u in us)
                     {
-                        Contain = u.ID_REG.ToString().Contains(id_search) && u.ID_SENSOR.ToString().Contains(id_sensor_search) && u.MEDICION.ToString().Contains(medicion_search) && u.FECHAYHORA.ToString().Contains(Fecha_search);
+                        Contain = u.ID_REG.ToString().Contains(id_search) &&
+                                  u.ID_SENSOR.ToString().Contains(id_sensor_search) &&
+                                  u.MEDICION.ToString().Contains(medicion_search) &&
+                                  u.FECHAYHORA.ToString().Contains(Fecha_search);
                         if (Contain)
                         {
                             modelo.sensores.Add(new Models.Sensor
@@ -113,9 +89,7 @@ namespace Server.Controllers
                                 MEDICION = (float)u.MEDICION,
                                 FECHAYHORA = u.FECHAYHORA
                             });
-                        }
-                        
-                        
+                        }   
                     }
                 }
             }

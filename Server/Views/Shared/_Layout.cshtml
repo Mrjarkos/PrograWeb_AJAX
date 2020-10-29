@@ -1,40 +1,150 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
+    <title>Monitor de Temperatura</title>
+
+    <link href="~/Content/css/application.css" rel="stylesheet">
+    <link rel="shortcut icon" href="~/Content/img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
-    <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <script src="~/Scripts/modernizr-2.8.3.js"></script>
+    <meta name="description" content="Página web para la asignatura de Programación Web de la Facultad de Ingeniería electrónica de la Universidad Santo Tomás">
+    <meta name="author" content="Javier Cárdenas - William Pinto">
+    <meta charset="utf-8">
+    <script>
+        /* yeah we need this empty stylesheet here. It's cool chrome & chromium fix
+           chrome fix https://code.google.com/p/chromium/issues/detail?id=167083
+                      https://code.google.com/p/chromium/issues/detail?id=332189
+        */
+    </script>
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
+    <div class="logo">
+        <h4><a href="/Home/Index">TempMonitor <strong>WJ</strong></a></h4>
+    </div>
+    <nav id="sidebar" class="sidebar nav-collapse collapse">
+        <ul id="side-nav" class="side-nav">
+            <li class="active">
+                <a href="/Home/Index"><i class="fa fa-home"></i> <span class="name">Principal</span></a>
+            </li>
+            <li class="panel ">
+                <a href="/User/Load"><i class="fa fa-magic"></i> <span class="name">Usuarios</span></a>
+            </li>
+            <li class="panel ">
+                <a href="/Sensor/Index"><i class="fa fa-magic"></i> <span class="name">Regsitro Sensores</span></a>
+            </li>
+        </ul>
+    </nav>
+    <div class="wrap">
+        <header class="page-header">
+            <div class="navbar">
+                <ul class="nav navbar-nav navbar-right pull-right">
+                    <li class="hidden-xs">
+                        <a href="#" id="settings"
+                           title="Settings"
+                           data-toggle="popover"
+                           data-placement="bottom">
+                            <i class="glyphicon glyphicon-cog"></i>
+                        </a>
+                    </li>
+                    <li class="visible-xs">
+                        <a href="#"
+                           class="btn-navbar"
+                           data-toggle="collapse"
+                           data-target=".sidebar"
+                           title="">
+                            <i class="fa fa-bars"></i>
+                        </a>
+                    </li>
+                    <li class="hidden-xs"><a href="/Login/Login"><i class="glyphicon glyphicon-off"></i></a></li>
                 </ul>
             </div>
+        </header>
+        <div class="content container">
+            @RenderBody()
+        </div>
+        <div class="loader-wrap hiding hide">
+            <i class="fa fa-circle-o-notch fa-spin"></i>
         </div>
     </div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
-    </div>
+ 
+    <!-- common libraries. required for every page-->
+    <script src="~/Scripts/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/Scripts/lib/jquery-pjax/jquery.pjax.js"></script>
+    <script src="~/Scripts/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/lib/widgster/widgster.js"></script>
+    <script src="~/Scripts/lib/underscore/underscore.js"></script>
 
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- common application js -->
+    <script src="~/Scripts/js/app.js"></script>
+    <script src="~/Scripts/js/settings.js"></script>
+
+    <!-- common templates -->
+    <script type="text/template" id="settings-template">
+        <div class="setting clearfix">
+            <div>Lado de Barra lateral</div>
+            <div id="sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+                <% onRight = sidebar == 'right'%>
+                <button type="button" data-value="left" class="btn btn-sm btn-default <%= onRight? '' : 'active' %>">Izq</button>
+                <button type="button" data-value="right" class="btn btn-sm btn-default <%= onRight? 'active' : '' %>">Der</button>
+            </div>
+        </div>
+        <div class="setting clearfix">
+            <div>Barra Lateral</div>
+            <div id="display-sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
+                <% display = displaySidebar%>
+                <button type="button" data-value="true" class="btn btn-sm btn-default <%= display? 'active' : '' %>">Most</button>
+                <button type="button" data-value="false" class="btn btn-sm btn-default <%= display? '' : 'active' %>">Ocul</button>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/template" id="sidebar-settings-template">
+        <% auto = sidebarState == 'auto'%>
+        <% if (auto) {%>
+        <button type="button"
+                data-value="icons"
+                class="btn-icons btn btn-transparent btn-sm">
+            Icons
+        </button>
+        <button type="button"
+                data-value="auto"
+                class="btn-auto btn btn-transparent btn-sm">
+            Auto
+        </button>
+        <%} else {%>
+        <button type="button"
+                data-value="auto"
+                class="btn btn-transparent btn-sm">
+            Auto
+        </button>
+        <% } %>
+    </script>
+
+    <!-- page specific scripts -->
+    <!-- page libs --> 
+    <script src="~/Scripts/lib/jquery.sparkline/index.js"></script>
+
+    <!-- page application js -->
+    <script src="~/Scripts/js/index.js"></script>
+
+    <!-- page template -->
+    <script type="text/template" id="message-template">
+        <div class="sender pull-left">
+            <div class="icon">
+                <img src="~/Content/img/2.png" class="img-circle" alt="">
+            </div>
+            <div class="time">
+                just now
+            </div>
+        </div>
+        <div class="chat-message-body">
+            <span class="arrow"></span>
+            <div class="sender"><a href="#">Tikhon Laninga</a></div>
+            <div class="text">
+                <%- text %>
+            </div>
+        </div>
+    </script>
+
 </body>
 </html>

@@ -2,6 +2,7 @@
 <Schema Namespace="DatosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="DatosEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="SensorDevice" EntityType="DatosModel.SensorDevice" />
+    <EntitySet Name="USUARIOS" EntityType="DatosModel.USUARIOS" />
   </EntityContainer>
   <EntityType Name="SensorDevice">
     <Key>
@@ -10,6 +11,18 @@
     <Property Name="ID_REG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="ID_SENSOR" Type="Int32" Nullable="false" />
     <Property Name="MEDICION" Type="Double" Nullable="false" />
-    <Property Name="FECHAYHORA" Type="DateTime" Nullable="false" />
+    <Property Name="FECHAYHORA" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ROL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOC_TYPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOCUMENTO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

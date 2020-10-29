@@ -1,0 +1,80 @@
+﻿@model Ejemplo1.Models.Usuario
+@{
+    ViewBag.Title = "Add";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-title">Usuarios <small>Añadir</small></h2>
+<section class="widget col-md-8">
+
+    @if (ViewBag.mensaje != null)
+    {
+        if (ViewBag.error)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.mensaje
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success">
+                @ViewBag.mensaje
+            </div>
+        }
+
+        <section class="widget">
+            <a class="btn btn-lg btn-success" href="/User/Add" role="button">Volver a Crear</a>
+            <a class="btn btn-lg btn-primary" href="/Home/Index" role="button">Inicio</a>
+        </section>
+    }
+    else
+    {
+
+        <form action="/User/Guardar" method="post">
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control is-invalid" id="NOMBRE" name="NOMBRE" placeholder="Introduzca su Nombre de Usuario">
+            </div>
+
+            <div class="form-group">
+                <label for="inputuser">Tipo de Usuario</label>
+                <select id="ROL" name="ROL" class="form-control">
+                    <option selected>COMÚN</option>
+                    <option>ADMINISTRADOR</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control is-invalid" id="CORREO" name="CORREO" aria-describedby="emailHelp" placeholder="Introduzca su correo electrónico">
+
+                </div>
+                <div class="form-group  col-md-6">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control is-invalid" id="PASSWORD" name="PASSWORD" placeholder="Password">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="inputTipoDocumento">Tipo de Documento</label>
+                    <select id="DOC_TYPE" name="DOC_TYPE" class="form-control">
+                        <option selected>CEDULA DE CIUDADANÍA</option>
+                        <option>TARJETA DE IDENTIDAD</option>
+                        <option>PASAPORTE</option>
+                        <option>CARNET DE EXTRANJERIA</option>
+                    </select>
+                </div>
+                <div class="form-group  col-md-6">
+                    <label for="inputDocumento">Número de Documento</label>
+                    <input type="text" class="form-control is-invalid" id="DOCUMENTO" name="DOCUMENTO" placeholder="Introduzca su Número de Documento">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+    }
+
+
+</section>

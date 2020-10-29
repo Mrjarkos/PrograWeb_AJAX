@@ -84,6 +84,9 @@
     <Compile Include="SensorDevice.cs">
       <DependentUpon>Datos.tt</DependentUpon>
     </Compile>
+    <Compile Include="USUARIOS.cs">
+      <DependentUpon>Datos.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

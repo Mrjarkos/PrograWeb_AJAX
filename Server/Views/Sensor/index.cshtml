@@ -4,6 +4,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+
 <h2 class="page-title">Registro de sensores </h2>
 
 @if (ViewBag.mensaje != null)
@@ -27,13 +28,9 @@
         <h4>
             Registros de datos de sensores
         </h4>
-        <div class="widget-controls">
-            <a data-widgster="expand" title="Expandir" href="#"><i class="glyphicon glyphicon-plus"></i></a>
-            <a data-widgster="collapse" title="Colapsar" href="#"><i class="glyphicon glyphicon-minus"></i></a>
-            <a data-widgster="close" title="Cerrar" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-        </div>
     </header>
     <div class="widget-table-overflow">
+
         <table id="myTable" class="table table-striped table-lg mt-sm mb-0 sources-table">
             <thead>
                 <tr>
@@ -42,21 +39,25 @@
                     <th>Valor Medido</th>
                     <th>Fecha y Hora registrada</th>
                 </tr>
+                <tr>
+                    <th><input type="text" class="text-primary" id="id_search" name="id_search" /></th>
+                    <th><input type="text" class="text-primary" id="id_sensor_search" name="id_sensor_search" /></th>
+                    <th><input type="text" class="text-primary" id="medicion_search" name="medicion_search" /></th>
+                    <th><input type="text" class="text-primary" id="Fecha_search" name="Fecha_search" /></th>
+                </tr>
             </thead>
-            <tbody>
-                @foreach (var a in Model.sensores)
-                {
-                    <tr>
-                        <td>@a.ID_REG</td>
-                        <td>@a.ID_SENSOR</td>
-                        <td>@a.MEDICION</td>
-                        <td>@a.FECHAYHORA</td>
-                    </tr>
-                }
+            <tbody id="MyTbody" name="MyTbody">
             </tbody>
         </table>
     </div>
+    <script src="~/Scripts/Sensores.js"></script>
+
 </section>
+
+
+
+
+
 
 
 

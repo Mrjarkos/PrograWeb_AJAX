@@ -9,7 +9,20 @@
     <Property Name="MEDICION" Type="float" Nullable="false" />
     <Property Name="FECHAYHORA" Type="datetime" Nullable="false" />
   </EntityType>
+  <EntityType Name="USUARIOS">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ROL" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="CORREO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOC_TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOCUMENTO" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
   <EntityContainer Name="DatosModelStoreContainer">
     <EntitySet Name="SensorDevice" EntityType="Self.SensorDevice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

@@ -1,9 +1,9 @@
 ﻿window.onload = function () {
     PedirDatos();
-    id_search.addEventListener('change', PedirDatos);
-    id_sensor_search.addEventListener('change', PedirDatos);
-    medicion_search.addEventListener('change', PedirDatos);
-    Fecha_search.addEventListener('change', PedirDatos);
+    id_search.addEventListener('keyup', PedirDatos);
+    id_sensor_search.addEventListener('keyup', PedirDatos);
+    medicion_search.addEventListener('keyup', PedirDatos);
+    Fecha_search.addEventListener('keyup', PedirDatos);
 }
 
 function PedirDatos() {
@@ -16,9 +16,10 @@ function PedirDatos() {
     }
 
     var parameters = "?id_search=" + id_search.value + "&" + "id_sensor_search=" + id_sensor_search.value +
-        "&" + "medicion_search=" + medicion_search.value + "&" + "Fecha_search=" + Fecha_search.value;
+        "&" + "medicion_search=" + medicion_search.value + "&" + "Fecha_search=" + Fecha_search.value +
+        "&";
     var xh = new XMLHttpRequest();
-    xh.open("GET", "Sensor/GetRegister"+parameters, true)
+    xh.open("GET", "/Sensor/GetRegister"+parameters, true)
     xh.responseType = "json";
     xh.onreadystatechange = function () {
         if (xh.readyState == 4) {

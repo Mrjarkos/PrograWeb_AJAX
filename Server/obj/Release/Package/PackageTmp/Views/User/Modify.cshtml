@@ -1,0 +1,120 @@
+﻿@model Ejemplo1.Models.Usuario
+@{
+    ViewBag.Title = "Modify";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-title">Usuarios <small>Modificar</small></h2>
+<section class="widget col-md-8">
+    @if (ViewBag.mensaje != null)
+    {
+        if (ViewBag.error)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.mensaje
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success">
+                @ViewBag.mensaje
+            </div>
+        }
+
+        <section class="widget">
+            <a class="btn btn-lg btn-success" href="/User/Load" role="button">Usuarios</a>
+            <a class="btn btn-lg btn-primary" href="/Home/Index" role="button">Inicio</a>
+        </section>
+    }
+    else
+    {
+        <form action="/User/Modificar" method="post">
+            
+            <input type="hidden" class="form-control is-invalid" id="ID" name="ID" value=@Model.ID>
+            
+
+            <div class="form-group">
+                <label>Nombre</label>
+                <input type="text" class="form-control is-invalid" id="NOMBRE" name="NOMBRE" placeholder="Introduzca su Nombre de Usuario" value=@Model.NOMBRE>
+            </div>
+
+            <div class="form-group">
+                <label for="inputuser">Tipo de Usuario</label>
+                <select id="ROL" name="ROL" class="form-control">
+                    @if (Model.ROL == "COMÚN")
+                    {
+                        <option selected>COMÚN</option>
+                        <option>ADMINISTRADOR</option>
+                    }
+                    else
+                    {
+                        <option>COMÚN</option>
+                        <option selected>ADMINISTRADOR</option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="Email">Email</label>
+                    <input type="email" class="form-control is-invalid" id="CORREO" name="CORREO" aria-describedby="emailHelp" value=@Model.CORREO placeholder="Introduzca su correo electrónico">
+
+                </div>
+                <div class="form-group  col-md-6">
+                    <label for="password">Contraseña</label>
+                    <input type="password" class="form-control is-invalid" id="PASSWORD" name="PASSWORD" value=@Model.PASSWORD placeholder="Password">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group  col-md-6">
+                    <label for="inputTipoDocumento">Tipo de Documento</label>
+                    <select id="DOC_TYPE" name="DOC_TYPE" class="form-control">
+
+                        @switch (Model.DOC_TYPE)
+                        {
+                            case "CEDULA DE CIUDADANÍA":
+                                <option selected>CEDULA DE CIUDADANÍA</option>
+                                <option>TARJETA DE IDENTIDAD</option>
+                                <option>PASAPORTE</option>
+                                <option>CARNET DE EXTRANJERIA</option>
+                                break;
+                            case "TARJETA DE IDENTIDAD":
+                                <option>CEDULA DE CIUDADANÍA</option>
+                                <option selected>TARJETA DE IDENTIDAD</option>
+                                <option>PASAPORTE</option>
+                                <option>CARNET DE EXTRANJERIA</option>
+                                break;
+                            case "PASAPORTE":
+                                <option>CEDULA DE CIUDADANÍA</option>
+                                <option>TARJETA DE IDENTIDAD</option>
+                                <option selected>PASAPORTE</option>
+                                <option>CARNET DE EXTRANJERIA</option>
+                                break;
+                            case "CARNET DE EXTRANJERIA":
+                                <option>CEDULA DE CIUDADANÍA</option>
+                                <option>TARJETA DE IDENTIDAD</option>
+                                <option>PASAPORTE</option>
+                                <option selected>CARNET DE EXTRANJERIA</option>
+                                break;
+                            default:
+                                <option selected>CEDULA DE CIUDADANÍA</option>
+                                <option>TARJETA DE IDENTIDAD</option>
+                                <option>PASAPORTE</option>
+                                <option>CARNET DE EXTRANJERIA</option>
+                                break;
+                        }
+
+
+                    </select>
+                </div>
+                <div class="form-group  col-md-6">
+                    <label for="inputDocumento">Número de Documento</label>
+                    <input type="text" class="form-control is-invalid" id="DOCUMENTO" name="DOCUMENTO" value=@Model.DOCUMENTO placeholder="Introduzca su Número de Documento">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+    }
+    </section>
+    

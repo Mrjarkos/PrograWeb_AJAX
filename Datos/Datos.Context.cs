@@ -26,5 +26,6 @@ namespace Datos
         }
     
         public virtual DbSet<SensorDevice> SensorDevice { get; set; }
+        public virtual DbSet<USUARIOS> USUARIOS { get; set; }
     }
 }
