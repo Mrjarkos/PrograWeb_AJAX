@@ -64,10 +64,14 @@ namespace Server.Controllers
             string id_sensor_search = Request.QueryString["id_sensor_search"];
             string medicion_search = Request.QueryString["medicion_search"];
             string Fecha_search = Request.QueryString["Fecha_search"];
+            int Page = Convert.ToInt32( Request.QueryString["Page"]);
             bool Contain=false;
 
             var modelo = new Models.SensorView();
             modelo.sensores = new List<Models.Sensor>();
+            var Responce = new Models.JsonTable();
+
+
             ViewBag.error = false;
             try
             {
@@ -89,8 +93,23 @@ namespace Server.Controllers
                                 MEDICION = (float)u.MEDICION,
                                 FECHAYHORA = u.FECHAYHORA
                             });
-                        }   
+                        }
+
+                       
                     }
+
+
+                    //division
+
+                    Responce = new Models.JsonTable() {
+                        TotalPaginas = (int)Math.Ceiling((double)modelo.sensores.Count() / 10),
+                        PaginaActual =Page,
+                        Registros= modelo.sensores.Skip((Page - 1) * 10).Take(10).ToList()
+                    };
+                    
+
+                    //Numero a enviar
+
                 }
             }
             catch (Exception ex)
@@ -98,7 +117,7 @@ namespace Server.Controllers
                 ViewBag.error = true;
                 ViewBag.mensaje = "Error:" + ex.Message.ToString();
             }
-            return Json(modelo, JsonRequestBehavior.AllowGet);
+            return Json(Responce, JsonRequestBehavior.AllowGet);
         }
 
     }

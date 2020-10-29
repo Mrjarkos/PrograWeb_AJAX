@@ -4,7 +4,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-
 <h2 class="page-title">Registro de sensores </h2>
 
 @if (ViewBag.mensaje != null)
@@ -29,6 +28,7 @@
             Registros de datos de sensores
         </h4>
     </header>
+
     <div class="widget-table-overflow">
 
         <table id="myTable" class="table table-striped table-lg mt-sm mb-0 sources-table">
@@ -40,16 +40,30 @@
                     <th>Fecha y Hora registrada</th>
                 </tr>
                 <tr>
-                    <th><input type="text" class="text-primary" id="id_search" name="id_search" /></th>
-                    <th><input type="text" class="text-primary" id="id_sensor_search" name="id_sensor_search" /></th>
-                    <th><input type="text" class="text-primary" id="medicion_search" name="medicion_search" /></th>
-                    <th><input type="text" class="text-primary" id="Fecha_search" name="Fecha_search" /></th>
+                    <th><input type="text" class="text-primary" id="id_search" name="id_search" placeholder="Id" /></th>
+                    <th><input type="text" class="text-primary" id="id_sensor_search" name="id_sensor_search" placeholder="Id Sensor" /></th>
+                    <th><input type="text" class="text-primary" id="medicion_search" name="medicion_search" placeholder="Medición" /></th>
+                    <th><input type="text" class="text-primary" id="Fecha_search" name="Fecha_search" placeholder="Fecha y Hora" /></th>
                 </tr>
             </thead>
             <tbody id="MyTbody" name="MyTbody">
             </tbody>
         </table>
     </div>
+
+    <div class="pagination">
+        <input type="button" value="&laquo;" id="Bback"/>
+        <input type="button" value="" id="B0" />
+        <input type="button" value="" id="B1" />
+        <input type="button" value="" id="B2" />
+        <input type="button" value="" id="B3" class="ActualPage" />
+        <input type="button" value="" id="B4" />
+        <input type="button" value="" id="B5" />
+        <input type="button" value="" id="BN" />
+        <input type="button" value="&raquo;" id="Bfollow"/>
+
+    </div>
+
     <script src="~/Scripts/Sensores.js"></script>
 
 </section>
