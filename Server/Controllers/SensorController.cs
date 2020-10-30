@@ -82,10 +82,11 @@ namespace Server.Controllers
                     foreach (var u in us)
                     {
                         var a = u.MEDICION.ToString("####0.000");
+                        var b = u.FECHAYHORA.AddHours(2);
                         Contain = u.ID_REG.ToString().Contains(id_search) &&
                                   u.ID_SENSOR.ToString().Contains(id_sensor_search) &&
                                   a.Contains(medicion_search) &&
-                                  u.FECHAYHORA.ToString().Contains(Fecha_search);
+                                  b.ToString("dd-MM-yy HH:mm:ss").Contains(Fecha_search);
                         if (Contain)
                         {
                             modelo.sensores.Add(new Models.Sensor
@@ -93,11 +94,9 @@ namespace Server.Controllers
                                 ID_REG = u.ID_REG,
                                 ID_SENSOR = u.ID_SENSOR,
                                 MEDICION = (float)u.MEDICION,
-                                FECHAYHORA = u.FECHAYHORA
+                                FECHAYHORA = b
                             });
                         }
-
-                       
                     }
 
 
