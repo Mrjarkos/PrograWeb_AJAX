@@ -65,6 +65,7 @@ namespace Server.Controllers
             string medicion_search = Request.QueryString["medicion_search"];
             string Fecha_search = Request.QueryString["Fecha_search"];
             int Page = Convert.ToInt32( Request.QueryString["Page"]);
+            int N_items = Convert.ToInt32(Request.QueryString["N_items"]);
             bool Contain=false;
 
             var modelo = new Models.SensorView();
@@ -80,9 +81,10 @@ namespace Server.Controllers
                     var us = context.SensorDevice.ToArray();
                     foreach (var u in us)
                     {
+                        var a = u.MEDICION.ToString("####0.000");
                         Contain = u.ID_REG.ToString().Contains(id_search) &&
                                   u.ID_SENSOR.ToString().Contains(id_sensor_search) &&
-                                  u.MEDICION.ToString().Contains(medicion_search) &&
+                                  a.Contains(medicion_search) &&
                                   u.FECHAYHORA.ToString().Contains(Fecha_search);
                         if (Contain)
                         {
@@ -102,9 +104,9 @@ namespace Server.Controllers
                     //division
 
                     Responce = new Models.JsonTable() {
-                        TotalPaginas = (int)Math.Ceiling((double)modelo.sensores.Count() / 10),
+                        TotalPaginas = (int)Math.Ceiling((double)modelo.sensores.Count() / N_items),
                         PaginaActual =Page,
-                        Registros= modelo.sensores.Skip((Page - 1) * 10).Take(10).ToList()
+                        Registros= modelo.sensores.Skip((Page - 1) * N_items).Take(N_items).ToList()
                     };
                     
 

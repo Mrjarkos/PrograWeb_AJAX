@@ -4,6 +4,7 @@
     id_sensor_search.addEventListener('keyup', function () { PedirDatos() });
     medicion_search.addEventListener('keyup', function () { PedirDatos() });
     Fecha_search.addEventListener('keyup', function () { PedirDatos() });
+    N_items_select.addEventListener('change', function () { PedirDatos() });
 
     B0.addEventListener('click', function () { PedirDatos(B0.value) });
     B1.addEventListener('click', function () { PedirDatos(B1.value) });
@@ -36,7 +37,7 @@ function PedirDatos(page) {
 
     var parameters = "?id_search=" + id_search.value + "&" + "id_sensor_search=" + id_sensor_search.value +
         "&" + "medicion_search=" + medicion_search.value + "&" + "Fecha_search=" + Fecha_search.value +
-        "&" + "Page=" + page;
+        "&" + "Page=" + page + "&" + "N_items=" + N_items_select.value;
     var xh = new XMLHttpRequest();
     xh.open("GET", "/Sensor/GetRegister"+parameters, true)
     xh.responseType = "json";
@@ -62,9 +63,9 @@ function ListRegister(Registros) {
         cell = row.insertCell(0);
         cell.innerHTML = Registros["Registros"][i].ID_REG;
         cell = row.insertCell(1);
-        cell.innerHTML = Registros["Registros"][i].ID_SENSOR;
+        cell.innerHTML = ("0" + Registros["Registros"][i].ID_SENSOR).slice(-2);
         cell = row.insertCell(2);
-        cell.innerHTML = Registros["Registros"][i].MEDICION;
+        cell.innerHTML = ("0"+(""+Registros["Registros"][i].MEDICION).slice(0,6)).slice(-6);
         cell = row.insertCell(3);
 
         var value = new Date(parseInt(Registros["Registros"][i].FECHAYHORA.substr(6)));
@@ -85,24 +86,23 @@ function Paginas(PA, PT) {
     B5.value = PA + 2;
 
 
-    if (PA != 1) {
+    if (PA > 1) {
         Bback.style.display = "inline";
         B2.style.display = "inline";
-        if (PA != 2) {
+        if (PA > 2) {
             B1.style.display = "inline";
-            if (PA != 3) {
+            if (PA > 3) {
                 B0.style.display = "inline";
                 B0.value = 1;
             }
         }
     }
-    if (PA != PT - 1) {
+    if (PA < PT) {
         Bfollow.style.display = "inline";
         B4.style.display = "inline";
-        if (PA != PT - 2) {
+        if (PA < PT - 1) {
             B5.style.display = "inline";
-            if (PA != PT - 3) {
-
+            if (PA < PT - 2) {
                 BN.style.display = "inline";
                 BN.value = PT;
             }
@@ -121,5 +121,6 @@ function Hide() {
     B3.style.display = "none";
     B4.style.display = "none";
     B5.style.display = "none";
+    BN.style.display = "none";
     Bfollow.style.display = "none";
 }

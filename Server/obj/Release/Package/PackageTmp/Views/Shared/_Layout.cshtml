@@ -25,183 +25,18 @@
             <li class="active">
                 <a href="/Home/Index"><i class="fa fa-home"></i> <span class="name">Principal</span></a>
             </li>
-            @*@<li class="">
-            <a href="~/Home/typography.html"><i class="fa fa-font"></i> Tipografía</a>
-        </li>
-        </li>
-        <li class="">
-            <a href="~/Home/tables.html"><i class="fa fa-table"></i> Tablas</a>
-        </li>
-        </li>
-        <li class="">
-            <a href="~/Home/notifications.html"><i class="fa fa-bell"></i> Notificaciones</a>
-        </li>
-        </li>*@
             <li class="panel ">
                 <a href="/User/Load"><i class="fa fa-magic"></i> <span class="name">Usuarios</span></a>
             </li>
             <li class="panel ">
-                <a href="/Device/ShowRegister"><i class="fa fa-magic"></i> <span class="name">Regsitro Sensores</span></a>
+                <a href="/Sensor/Index"><i class="fa fa-magic"></i> <span class="name">Regsitro Sensores</span></a>
             </li>
         </ul>
-
-        <!--<h5 class="sidebar-nav-title">Etiquetas <a class="action-link" href="#"><i class="glyphicon glyphicon-plus"></i></a></h5>-->
-        <!-- some styled links in sidebar. ready to use as links to email folders, projects, groups, etc -->
-        <!--<ul class="sidebar-labels">
-            <li>
-                <a href="#">-->
-                    <!-- yep, .circle again -->
-                    <!--<i class="fa fa-circle text-warning"></i>
-                    <span class="label-name">Recientes</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-circle text-gray"></i>
-                    <span class="label-name">Destacado</span>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="fa fa-circle text-danger"></i>
-                    <span class="label-name">En 2do Plano</span>
-                </a>
-            </li>
-        </ul>-->
-
-        <!--<h5 class="sidebar-nav-title">Proyectos</h5>-->
-        <!-- A place for sidebar notifications & alerts -->
-        <!--<div class="sidebar-alerts">
-            <div class="alert fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                <span class="text-white fw-semi-bold">Reporte de Ventas</span> <br>
-                <div class="progress progress-xs mt-xs mb-0">
-                    <div class="progress-bar progress-bar-gray-light" style="width: 16%"></div>
-                </div>
-                <small>Calculando desviación eje x... 65%</small>
-            </div>
-            <div class="alert fade in">
-                <a href="#" class="close" data-dismiss="alert" aria-hidden="true">&times;</a>
-                <span class="text-white fw-semi-bold">Responsabilidad Personal</span> <br>
-                <div class="progress progress-xs mt-xs mb-0">
-                    <div class="progress-bar progress-bar-danger" style="width: 23%"></div>
-                </div>
-                <small>Proporcionar notas requeridas</small>
-            </div>
-        </div>-->
     </nav>
     <div class="wrap">
         <header class="page-header">
             <div class="navbar">
                 <ul class="nav navbar-nav navbar-right pull-right">
-                    @*<li class="visible-phone-landscape">
-                        <a href="#" id="search-toggle">
-                            <i class="fa fa-search"></i>
-                        </a>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" title="Messages" id="messages"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-comment"></i>
-                        </a>
-                        <ul id="messages-menu" class="dropdown-menu messages" role="menu">
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="~/Content/img/1.png" alt="">
-                                    <div class="details">
-                                        <div class="sender">Javier Cárdenas</div>
-                                        <div class="text">
-                                            Hey, Profe! Como vamos? ...
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="~/Content/img/2.png" alt="">
-                                    <div class="details">
-                                        <div class="sender">Uriel Carrero</div>
-                                        <div class="text">
-                                            Profe, esta página está increible
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="message">
-                                    <img src="~/Content/img/3.png" alt="">
-                                    <div class="details">
-                                        <div class="sender">William Pinto</div>
-                                        <div class="text">
-                                            Hola, Soy William, mucho gusto trabajar con ustedes
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="text-align-center see-all">
-                                    Ver todos los Mensajes <i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="dropdown">
-                        <a href="#" title="8 support tickets"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-globe"></i>
-                            <span class="count">8</span>
-                        </a>
-                        <ul id="support-menu" class="dropdown-menu support" role="menu">
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-important"><i class="fa fa-bell-o"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        Mira este increible detalle
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-warning"><i class="fa fa-question-circle"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        "Cual sería la mejor forma de obtener...
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-success"><i class="fa fa-tag"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        Esta es solo una simple notificación
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="support-ticket">
-                                    <div class="picture">
-                                        <span class="label label-info"><i class="fa fa-info-circle"></i></span>
-                                    </div>
-                                    <div class="details">
-                                        12 nuevas ordenes llegan hoy
-                                    </div>
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="text-align-center see-all">
-                                    Ver todas las Notificaciones<i class="fa fa-arrow-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="divider"></li>*@
                     <li class="hidden-xs">
                         <a href="#" id="settings"
                            title="Settings"
@@ -210,37 +45,6 @@
                             <i class="glyphicon glyphicon-cog"></i>
                         </a>
                     </li>
-                    @*<li class="hidden-xs dropdown">
-                        <a href="#" title="Account" id="account"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown">
-                            <i class="glyphicon glyphicon-user"></i>
-                        </a>
-                        <ul id="account-menu" class="dropdown-menu account" role="menu">
-                            <li role="presentation" class="account-picture">
-                                <img src="~/Content/img/2.png" alt="">
-                                @ViewBag.User
-                            </li>
-                            <li role="presentation">
-                                <a href="form_account.html" class="link">
-                                    <i class="fa fa-user"></i>
-                                    Perfil
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="component_calendar.html" class="link">
-                                    <i class="fa fa-calendar"></i>
-                                    Calendario
-                                </a>
-                            </li>
-                            <li role="presentation">
-                                <a href="#" class="link">
-                                    <i class="fa fa-inbox"></i>
-                                    Bandeja de Entrada
-                                </a>
-                            </li>
-                        </ul>
-                    </li>*@
                     <li class="visible-xs">
                         <a href="#"
                            class="btn-navbar"
@@ -252,17 +56,8 @@
                     </li>
                     <li class="hidden-xs"><a href="/Login/Login"><i class="glyphicon glyphicon-off"></i></a></li>
                 </ul>
-                @*<form id="search-form" class="navbar-form pull-right" role="search">
-                    <input type="search" class="form-control search-query" placeholder="Buscar">
-                </form>
-                <div class="notifications pull-right">
-                    <div class="alert pull-right">
-                        <a href="#" class="close ml-xs" data-dismiss="alert">&times;</a>
-                        <i class="fa fa-info-circle mr-xs"></i> Mira las <a id="notification-link" href="#">configuraciones</a> de la plantilla a la derecha!
-                    </div>
-                </div>*@
             </div>
-        </header>  
+        </header>
         <div class="content container">
             @RenderBody()
         </div>
@@ -270,6 +65,8 @@
             <i class="fa fa-circle-o-notch fa-spin"></i>
         </div>
     </div>
+
+ 
     <!-- common libraries. required for every page-->
     <script src="~/Scripts/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/Scripts/lib/jquery-pjax/jquery.pjax.js"></script>
@@ -324,19 +121,11 @@
     </script>
 
     <!-- page specific scripts -->
-    <!-- page libs -->
-    <script src="~/Scripts/lib/slimScroll/jquery.slimscroll.min.js"></script>
+    <!-- page libs --> 
     <script src="~/Scripts/lib/jquery.sparkline/index.js"></script>
-
-    <script src="~/Scripts/lib/backbone/backbone.js"></script>
-    <script src="~/Scripts/lib/backbone.localStorage/build/backbone.localStorage.min.js"></script>
-
-    <script src="~/Scripts/lib/d3/d3.min.js"></script>
-    <script src="~/Scripts/lib/nvd3/build/nv.d3.min.js"></script>
 
     <!-- page application js -->
     <script src="~/Scripts/js/index.js"></script>
-    <script src="~/Scripts/js/chat.js"></script>
 
     <!-- page template -->
     <script type="text/template" id="message-template">

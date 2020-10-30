@@ -23,14 +23,25 @@
 }
 
 <section class="widget">
-    <header>
-        <h4>
-            Registros de datos de sensores
-        </h4>
-    </header>
 
-    <div class="widget-table-overflow">
-
+    <div class="widget-table-overflow mt-3">
+        <form>
+            <div class="form-row">
+                <div class="col-md-1">
+                    <label for="N_items_select">Number of Items</label>
+                </div>
+                <div class="col-md-1">
+                    <select id="N_items_select" class="form-control">
+                        <option>5</option>
+                        <option selected>10</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+                    
         <table id="myTable" class="table table-striped table-lg mt-sm mb-0 sources-table">
             <thead>
                 <tr>
@@ -40,10 +51,10 @@
                     <th>Fecha y Hora registrada</th>
                 </tr>
                 <tr>
-                    <th><input type="text" class="text-primary" id="id_search" name="id_search" placeholder="Id" /></th>
-                    <th><input type="text" class="text-primary" id="id_sensor_search" name="id_sensor_search" placeholder="Id Sensor" /></th>
-                    <th><input type="text" class="text-primary" id="medicion_search" name="medicion_search" placeholder="Medición" /></th>
-                    <th><input type="text" class="text-primary" id="Fecha_search" name="Fecha_search" placeholder="Fecha y Hora" /></th>
+                    <th><input type="text" class="form-control" id="id_search" name="id_search" placeholder="Id" /></th>
+                    <th><input type="text" class="form-control" id="id_sensor_search" name="id_sensor_search" placeholder="Id Sensor" /></th>
+                    <th><input type="text" class="form-control" id="medicion_search" name="medicion_search" placeholder="Medición" /></th>
+                    <th><input type="text" class="form-control" id="Fecha_search" name="Fecha_search" placeholder="Fecha y Hora" /></th>
                 </tr>
             </thead>
             <tbody id="MyTbody" name="MyTbody">
@@ -52,16 +63,15 @@
     </div>
 
     <div class="pagination">
-        <input type="button" value="&laquo;" id="Bback"/>
-        <input type="button" value="" id="B0" />
-        <input type="button" value="" id="B1" />
-        <input type="button" value="" id="B2" />
-        <input type="button" value="" id="B3" class="ActualPage" />
-        <input type="button" value="" id="B4" />
-        <input type="button" value="" id="B5" />
-        <input type="button" value="" id="BN" />
-        <input type="button" value="&raquo;" id="Bfollow"/>
-
+        <input type="button" class="btn btn-info" value="&laquo;" id="Bback" />
+        <input type="button" class="btn btn-primary" value="" id="B0" />
+        <input type="button" class="btn btn-primary" value="" id="B1" />
+        <input type="button" class="btn btn-primary" value="" id="B2" />
+        <input type="button" class="ActualPage btn btn-success" value="" id="B3" />
+        <input type="button" class="btn btn-primary" value="" id="B4" />
+        <input type="button" class="btn btn-primary" value="" id="B5" />
+        <input type="button" class="btn btn-primary" value="" id="BN" />
+        <input type="button" class="btn btn-info" value="&raquo;" id="Bfollow" />
     </div>
 
     <script src="~/Scripts/Sensores.js"></script>
