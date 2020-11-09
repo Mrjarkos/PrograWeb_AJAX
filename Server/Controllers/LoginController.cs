@@ -24,6 +24,7 @@ namespace Server.Controllers
                 try
                 {
                     ViewBag.error = false;
+                    DateTime date = DateTime.Now;
                     if (ModelState.IsValid)
                     {
                         using (var context = new Datos.DatosEntities())
@@ -44,14 +45,23 @@ namespace Server.Controllers
                                 DOCUMENTO = usuario.DOCUMENTO,
                                 DOC_TYPE = usuario.DOC_TYPE,
                                 ROL = usuario.ROL,
+                                DATECREATED = date,
+                                DATELASTMODIFICATION = date
                             });
                             context.SaveChanges();
                         }
                         ViewBag.mensaje = "Usuario adicionado exitosamente";
-                        var user = new Models.LoginUser {
+                        var user = new Models.Usuario {
                                                         CORREO=usuario.CORREO,
                                                         NOMBRE = usuario.NOMBRE,
-                                                        PASSWORD = usuario.PASSWORD};
+                                                        PASSWORD = usuario.PASSWORD,
+                                                        ID = usuario.ID,
+                                                        DATECREATED = usuario.DATECREATED,
+                                                        DATELASTMODIFICATION = usuario.DATELASTMODIFICATION,
+                                                        DOCUMENTO = usuario.DOCUMENTO,
+                                                        DOC_TYPE = usuario.DOC_TYPE,
+                                                        ROL = usuario.ROL
+                        };
                         ViewBag.User = user.NOMBRE;
                     }
                     else
@@ -76,7 +86,7 @@ namespace Server.Controllers
         }
 
         [HttpPost]
-        public ActionResult Ingresar(Models.LoginUser user)
+        public ActionResult Ingresar(Models.Usuario user)
         {
             try
             {

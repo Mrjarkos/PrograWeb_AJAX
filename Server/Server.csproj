@@ -1453,7 +1453,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\JsonTable.cs" />
-    <Compile Include="Models\LoginUser.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\RegisterView.cs" />
     <Compile Include="Models\Reporte.cs" />
