@@ -1,0 +1,102 @@
+﻿@{
+    ViewBag.Title = "Listar Reportes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-title">Administración de Reportes <br /> <small>Listar Mediciones de Sensores</small></h2>
+<section class="widget">
+    <a class="btn btn-lg btn-success" href="/Reporte/Add" role="button">Crear</a>
+</section>
+
+@if (ViewBag.mensaje != null)
+{
+    if (ViewBag.error)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.mensaje
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success">
+            @ViewBag.mensaje
+        </div>
+    }
+}
+
+<section class="widget">
+    <header>
+        <h4>
+            Reportes de Sensores en la base de datos
+        </h4>
+        <div class="widget-controls">
+            <a data-widgster="expand" title="Expandir" href="#"><i class="glyphicon glyphicon-plus"></i></a>
+            <a data-widgster="collapse" title="Colapsar" href="#"><i class="glyphicon glyphicon-minus"></i></a>
+            <a data-widgster="close" title="Cerrar" href="#"><i class="glyphicon glyphicon-remove"></i></a>
+        </div>
+    </header>
+    <div class="widget-table-overflow mt-3">
+        <form>
+            <div class="form-row">
+                <div class="col-md-1">
+                    <label for="N_items_select">Numero de Items</label>
+                </div>
+                <div class="col-md-1">
+                    <select id="N_items_select" class="form-control">
+                        <option>5</option>
+                        <option selected>10</option>
+                        <option>25</option>
+                        <option>50</option>
+                        <option>100</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <table id="myTable" class="table table-striped table-lg mt-sm mb-0 sources-table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Serial del Sensor</th>
+                    <th>Medición</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Fecha Reportada</th>
+                    <th>Fecha de Última Modificación</th>
+                    <th>Editar</th>
+                    <th>Borrar</th>
+                </tr>
+                <tr>
+                    <th><input type="text" class="form-control" id="id_search" name="id_search" placeholder="Id" /></th>
+                    <th><input type="text" class="form-control" id="id_sensor_search" name="id_sensor_search" placeholder="Sensor" /></th>
+                    <th><input type="text" class="form-control" id="medicion_search" name="medicion_search" placeholder="Medicion" /></th>
+                    <th><input type="text" class="form-control" id="latitud_search" name="latitud_search" placeholder="Latitud" /></th>
+                    <th><input type="text" class="form-control" id="longitud_search" name="longitud_search" placeholder="Longitud" /></th>
+                    <th><input type="text" class="form-control" id="Reported_search" name="Reported_search" placeholder="Fecha de Reporte" /></th>
+                    <th><input type="text" class="form-control" id="Modificacion_search" name="Modificacion_search" placeholder="Fecha de Modificación" /></th>
+                    <th>
+                    <th>
+                </tr>
+            </thead>
+            <tbody id="MyTbody" name="MyTbody">
+        </table>
+    </div>
+</section>
+
+<section class="widget">
+    <h4>
+        Paginación
+    </h4>
+    <div class="pagination mx-3 px-3">
+        <input type="button" class="btn btn-info" value="&laquo" id="Bback" />
+        <input type="button" class="btn btn-warning" value="" id="B0" />
+        <input type="button" class="btn btn-primary" value="" id="B1" />
+        <input type="button" class="btn btn-primary" value="" id="B2" />
+        <input type="button" class="ActualPage btn btn-success" value="" id="B3" />
+        <input type="button" class="btn btn-primary" value="" id="B4" />
+        <input type="button" class="btn btn-primary" value="" id="B5" />
+        <input type="button" class="btn btn-warning" value="" id="BN" />
+        <input type="button" class="btn btn-info" value="&raquo" id="Bfollow" />
+    </div>
+
+    <script src="~/Scripts/Reportes.js"></script>
+</section>

@@ -118,3 +118,4 @@ C:\Users\willi\Source\Repos\PrograWeb_AJAX\Server\obj\Release\Server.csproj.Core
 C:\Users\willi\Source\Repos\PrograWeb_AJAX\Server\obj\Release\Server.csproj.CopyComplete
 C:\Users\willi\Source\Repos\PrograWeb_AJAX\Server\obj\Release\Server.dll
 C:\Users\willi\Source\Repos\PrograWeb_AJAX\Server\obj\Release\Server.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Device.dll

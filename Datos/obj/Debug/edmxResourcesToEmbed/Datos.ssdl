@@ -1,28 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DatosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="SensorDevice">
+  <EntityType Name="REPORTES">
     <Key>
-      <PropertyRef Name="ID_REG" />
+      <PropertyRef Name="ID" />
     </Key>
-    <Property Name="ID_REG" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ID_SENSOR" Type="int" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SERIALSENSOR" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="MEDICION" Type="float" Nullable="false" />
-    <Property Name="FECHAYHORA" Type="datetime" Nullable="false" />
+    <Property Name="LATITUD" Type="float" Nullable="false" />
+    <Property Name="LONGITUD" Type="float" Nullable="false" />
+    <Property Name="DATEREPORTED" Type="datetime" Nullable="false" />
+    <Property Name="DATECREATED" Type="datetime" Nullable="false" />
+    <Property Name="DATELASTMODIFICATION" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SENSORES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SERIAL" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TIPO" Type="nvarchar" MaxLength="50" />
+    <Property Name="DESCRIPCION" Type="nvarchar" MaxLength="270" />
+    <Property Name="DATECREATED" Type="datetime" Nullable="false" />
+    <Property Name="DATELASTMODIFICATION" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityType Name="USUARIOS">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="ROL" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="NOMBRE" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="ROL" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="CORREO" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="DOC_TYPE" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="DOCUMENTO" Type="nvarchar" MaxLength="50" Nullable="false" />
-    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DOC_TYPE" Type="nvarchar" MaxLength="50" />
+    <Property Name="DOCUMENTO" Type="nvarchar" MaxLength="50" />
+    <Property Name="PASSWORD" Type="nvarchar" MaxLength="50" />
+    <Property Name="DATECREATED" Type="datetime" Nullable="false" />
+    <Property Name="DATELASTMODIFICATION" Type="datetime" Nullable="false" />
   </EntityType>
   <EntityContainer Name="DatosModelStoreContainer">
-    <EntitySet Name="SensorDevice" EntityType="Self.SensorDevice" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="REPORTES" EntityType="Self.REPORTES" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SENSORES" EntityType="Self.SENSORES" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="USUARIOS" EntityType="Self.USUARIOS" Schema="dbo" store:Type="Tables" />
   </EntityContainer>
 </Schema>

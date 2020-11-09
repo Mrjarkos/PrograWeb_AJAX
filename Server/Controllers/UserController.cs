@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Ejemplo1.Controllers
+namespace Server.Controllers
 {
     public class UserController : Controller
     {
@@ -18,35 +18,7 @@ namespace Ejemplo1.Controllers
 
         public ActionResult Load()
         {
-            var modelo = new Models.UsuarioView();
-            modelo.usuarios = new List<Models.Usuario>();
-            try
-            {
-                using (var context = new Datos.DatosEntities())
-                {
-                    var us = context.USUARIOS.ToArray();
-                    foreach (var u in us)
-                    {
-                        modelo.usuarios.Add(new Models.Usuario
-                        {
-                            NOMBRE = u.NOMBRE,
-                            CORREO = u.CORREO,
-                            DOCUMENTO = u.DOCUMENTO,
-                            DOC_TYPE = u.DOC_TYPE,
-                            ID = u.ID,
-                            ROL = u.ROL,
-                            PASSWORD = u.PASSWORD
-                        });
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                ViewBag.error = true;
-                ViewBag.mensaje = "Error:" + ex.Message.ToString();
-            }
-            var r = View(modelo);
-            return r;
+            return View();
         }
 
         public ActionResult Delete(string Id)
@@ -75,13 +47,11 @@ namespace Ejemplo1.Controllers
             return r;
         }
 
-
-
         [HttpPost]
         public ActionResult Modify(string Id)
         {
             int id = int.Parse(Id);
-            Ejemplo1.Models.Usuario usuario = new Models.Usuario();
+            Models.Usuario usuario = new Models.Usuario();
             usuario.ID = id;
             try
             {
@@ -98,7 +68,8 @@ namespace Ejemplo1.Controllers
                     usuario.NOMBRE = user_ant.NOMBRE;
                     usuario.ID = user_ant.ID;
                     usuario.ROL = user_ant.ROL;
-                    context.SaveChanges();
+                    usuario.DATECREATED = user_ant.DATECREATED;
+                    usuario.DATELASTMODIFICATION = user_ant.DATELASTMODIFICATION;
                 }
             }
             catch (Exception ex)
@@ -106,8 +77,7 @@ namespace Ejemplo1.Controllers
                 ViewBag.error = true;
                 ViewBag.mensaje = "Error:" + ex.Message.ToString();
             }
-            var r = View(usuario);
-            return r;
+            return View(usuario);
         }
 
         [HttpPost]
@@ -131,6 +101,7 @@ namespace Ejemplo1.Controllers
                             u.DOC_TYPE = usuario.DOC_TYPE;
                             u.CORREO = usuario.CORREO;
                             u.DOCUMENTO = usuario.DOCUMENTO;
+                            u.DATELASTMODIFICATION = DateTime.Now;
                         }
                         else {
                             throw new Exception("No se pudo almacenar en la base de datos, error del programador");
@@ -158,6 +129,7 @@ namespace Ejemplo1.Controllers
         {
             try
             {
+                DateTime date = DateTime.Now;
                 ViewBag.error = false;
                 if (ModelState.IsValid)
                 {
@@ -179,6 +151,8 @@ namespace Ejemplo1.Controllers
                             DOCUMENTO = usuario.DOCUMENTO,
                             DOC_TYPE = usuario.DOC_TYPE,
                             ROL = usuario.ROL,
+                            DATECREATED = date,
+                            DATELASTMODIFICATION = date
                         });
                         context.SaveChanges();
                     }
@@ -197,5 +171,66 @@ namespace Ejemplo1.Controllers
             }
             return View("Add");
         }
+
+        [HttpGet]
+        public JsonResult GetRegister(string id_search, string id_user_search, string document_search, 
+                                      string number_search, string email_search, string rol_search,
+                                      string Creacion_search, string Modificacion_search, int Page, int N_items)
+        {
+            bool Contain = false;
+
+            var modelo = new Models.RegisterView();
+            modelo.Registros = new List<Models.Register>();
+            var Responce = new Models.JsonTable();
+
+            ViewBag.error = false;
+            try
+            {
+                using (var context = new Datos.DatosEntities())
+                {
+                    var us = context.USUARIOS.ToArray();
+                    foreach (var u in us)
+                    {
+                        Contain = u.ID.ToString().Contains(id_search) &&
+                                  u.NOMBRE.ToString().Contains(id_user_search) &&
+                                  u.DOC_TYPE.Contains(document_search) &&
+                                  u.DOCUMENTO.Contains(number_search) &&
+                                  u.CORREO.Contains(email_search) &&
+                                  u.ROL.Contains(rol_search) &&
+                                  u.CORREO.Contains(Creacion_search) &&
+                                  u.CORREO.Contains(Modificacion_search);
+                        if (Contain)
+                        {
+                            modelo.Registros.Add(new Models.Usuario
+                            {
+                                ID = u.ID,
+                                NOMBRE = u.NOMBRE,
+                                DOC_TYPE = u.DOC_TYPE,
+                                DOCUMENTO = u.DOCUMENTO,
+                                CORREO = u.CORREO,
+                                ROL = u.ROL,
+                                DATECREATED = u.DATECREATED,
+                                DATELASTMODIFICATION = u.DATELASTMODIFICATION
+                            });
+                        }
+                    }
+                    //division
+
+                    Responce = new Models.JsonTable()
+                    {
+                        TotalPaginas = (int)Math.Ceiling((double)modelo.Registros.Count() / N_items),
+                        PaginaActual = Page,
+                        Registros = modelo.Registros.Skip((Page - 1) * N_items).Take(N_items).ToList()
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.error = true;
+                ViewBag.mensaje = "Error:" + ex.Message.ToString();
+            }
+            return Json(Responce, JsonRequestBehavior.AllowGet);
+        }
+
     }
 }

@@ -5,21 +5,18 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
-namespace Ejemplo1.Models
+namespace Server.Models
 {
-    public class Usuario
+    public class Usuario:Register
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public virtual int ID { get; set; }
         [Required]
         public string ROL { get; set; }
         [Required]
         public string NOMBRE { get; set; }
         [Required]
         [EmailAddress]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public string CORREO { get; set; }
-        [Required]
         public string DOC_TYPE { get; set; }
         [Required]
         public string DOCUMENTO { get; set; }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Ejemplo1.Controllers
+namespace Server.Controllers
 {
     public class LoginController : Controller
     {
@@ -81,7 +81,7 @@ namespace Ejemplo1.Controllers
             try
             {
                 ViewBag.error = false;
-                var modelo = new Models.UsuarioView();
+                var modelo = new Models.RegisterView();
 
                 using (var context = new Datos.DatosEntities())
                 {

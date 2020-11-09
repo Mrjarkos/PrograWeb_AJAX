@@ -1,0 +1,64 @@
+﻿@model Server.Models.Reporte
+@{
+    ViewBag.Title = "Adicionar Reporte";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-title">Reportes <br /> <small>Añadir</small></h2>
+<section class="widget col-md-8">
+
+    @if (ViewBag.mensaje != null)
+    {
+        if (ViewBag.error)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.mensaje
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success">
+                @ViewBag.mensaje
+            </div>
+        }
+
+        <section class="widget">
+            <a class="btn btn-lg btn-success" href="/Reporte/Add" role="button">Volver a Crear</a>
+            <a class="btn btn-lg btn-info" href="/Reporte/Load" role="button">Listar Reportes</a>
+            <a class="btn btn-lg btn-primary" href="/Home/Index" role="button">Inicio</a>
+        </section>
+    }
+    else
+    {
+
+<form action="/Reporte/Guardar" method="post">
+    <div class="form-group">
+        <label>Serial</label>
+        <textarea class="form-control is-invalid" id="SERIALSENSOR" name="SERIALSENSOR" placeholder="Introduzca el Serial del Dispositivo" maxlength="50"></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="inputuser">Medición</label>
+        <input type="number" step="any" class="form-control is-invalid" id="MEDICION" name="MEDICION" placeholder="Medicion" maxlength="50">
+    </div>
+
+    <div class="form-row">
+        <label>Ubicación</label>
+        <div class="form-group  col-md-6">
+            <label>Latitud</label>
+            <input type="number" step="any" class="form-control is-invalid" id="LATITUD" name="LATITUD" placeholder="Latitud">
+        </div>
+        <div class="form-group  col-md-6">
+            <label>Longitud</label>
+            <input type="number" step="any" class="form-control is-invalid" id="LONGITUD" name="LONGITUD" placeholder="Longitud">
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+    }
+
+    <script src="~/Scripts/Maxlength.js"></script>
+
+</section>

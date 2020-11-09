@@ -2,8 +2,9 @@
     PedirDatos();
     id_search.addEventListener('keyup', function () { PedirDatos()});
     id_sensor_search.addEventListener('keyup', function () { PedirDatos() });
-    medicion_search.addEventListener('keyup', function () { PedirDatos() });
-    Fecha_search.addEventListener('keyup', function () { PedirDatos() });
+    tipo_search.addEventListener('keyup', function () { PedirDatos() });
+    Creacion_search.addEventListener('keyup', function () { PedirDatos() });
+    Modificacion_search.addEventListener('keyup', function () { PedirDatos() });
     N_items_select.addEventListener('change', function () { PedirDatos() });
 
     B0.addEventListener('click', function () { PedirDatos(B0.value) });
@@ -15,8 +16,6 @@
     BN.addEventListener('click', function () { PedirDatos(BN.value) });
     Bback.addEventListener('click', function () { PedirDatos(B2.value) });
     Bfollow.addEventListener('click', function () { PedirDatos(B4.value) });
-    
-
 }
 
 function PedirDatos(page) {
@@ -24,10 +23,7 @@ function PedirDatos(page) {
     if (page == null) {
         page = 1;
     }
-    else {
 
-    }
-    
     var tableHeaderRowCount = 2;
     var table = document.getElementById('myTable');
     var rowCount = table.rows.length;
@@ -36,7 +32,8 @@ function PedirDatos(page) {
     }
 
     var parameters = "?id_search=" + id_search.value + "&" + "id_sensor_search=" + id_sensor_search.value +
-        "&" + "medicion_search=" + medicion_search.value + "&" + "Fecha_search=" + Fecha_search.value +
+        "&" + "tipo_search=" + tipo_search.value + "&" + "Creacion_search=" + Creacion_search.value +
+        "&" + "Modificacion_search=" + Modificacion_search.value + 
         "&" + "Page=" + page + "&" + "N_items=" + N_items_select.value;
     var xh = new XMLHttpRequest();
     xh.open("GET", "/Sensor/GetRegister"+parameters, true)
@@ -53,7 +50,6 @@ function PedirDatos(page) {
         }
     }
     xh.send();
-    
 }
 
 function ListRegister(Registros) {
@@ -61,20 +57,49 @@ function ListRegister(Registros) {
     for (i = 0; i < Registros["Registros"].length; i++) {
         row = myTable.insertRow();
         cell = row.insertCell(0);
-        cell.innerHTML = Registros["Registros"][i].ID_REG;
+        cell.innerHTML = Registros["Registros"][i].ID;
         cell = row.insertCell(1);
-        cell.innerHTML = ("0" + Registros["Registros"][i].ID_SENSOR).slice(-2);
+        cell.innerHTML = Registros["Registros"][i].SERIAL;
         cell = row.insertCell(2);
-        cell.innerHTML = ("0"+(""+Registros["Registros"][i].MEDICION).slice(0,6)).slice(-6);
+        cell.innerHTML = Registros["Registros"][i].TIPO;
         cell = row.insertCell(3);
+        var value = new Date(parseInt(Registros["Registros"][i].DATECREATED.substr(6)));
+        cell.innerHTML = formatted_date(value);
+        cell = row.insertCell(4);
+        var value = new Date(parseInt(Registros["Registros"][i].DATELASTMODIFICATION.substr(6)));
+        cell.innerHTML = formatted_date(value);
 
-        var value = new Date(parseInt(Registros["Registros"][i].FECHAYHORA.substr(6)));
-        var formatted_date = value.getFullYear() + "/" + ("0" + value.getMonth()).slice(-2) + "/" + ("0" + value.getDate()).slice(-2) + " " + ("0" + value.getHours()).slice(-2) + ":" + ("0" + value.getMinutes()).slice(-2) + ":" + ("0" + value.getSeconds()).slice(-2)
+        cell = row.insertCell(5);
+        var form = document.createElement('form');
+        form.action = "/Sensor/Modify";
+        form.method = "post";
+        var button = document.createElement('button');
+        button.className = "btn btn-warning glyphicon glyphicon-pencil";
+        button.type = "submit";
+        button.name = "Id";
+        button.value = Registros["Registros"][i].ID.toString();
+        button.id = i;
+        form.appendChild(button)
+        cell.appendChild(form);
 
-        cell.innerHTML = formatted_date;
-
+        cell = row.insertCell(6);
+        var form = document.createElement('form');
+        form.action = "/Sensor/Delete";
+        form.method = "post";
+        var button = document.createElement('button');
+        button.className = "btn btn-danger glyphicon glyphicon-remove";
+        button.type = "submit";
+        button.name = "Id";
+        button.value = Registros["Registros"][i].ID.toString();
+        button.id = i;
+        form.appendChild(button)
+        cell.appendChild(form);
         Paginas(parseInt(Registros["PaginaActual"]), parseInt(Registros["TotalPaginas"]));
     }
+}
+
+function formatted_date(value) {
+    return value.getFullYear() + "/" + ("0" + value.getMonth()).slice(-2) + "/" + ("0" + value.getDate()).slice(-2) + " " + ("0" + value.getHours()).slice(-2) + ":" + ("0" + value.getMinutes()).slice(-2) + ":" + ("0" + value.getSeconds()).slice(-2);
 }
 
 function Paginas(PA, PT) {
@@ -110,7 +135,6 @@ function Paginas(PA, PT) {
     }
 
     B3.style.display = "inline";
- 
 }
 
 function Hide() {

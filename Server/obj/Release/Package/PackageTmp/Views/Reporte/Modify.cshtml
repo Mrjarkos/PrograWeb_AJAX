@@ -1,0 +1,64 @@
+﻿@model Server.Models.Reporte
+@{
+    ViewBag.Title = "Modificar Sensor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-title">Reportes <small>Modificar</small></h2>
+<section class="widget col-md-8">
+    @if (ViewBag.mensaje != null)
+    {
+        if (ViewBag.error)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.mensaje
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success">
+                @ViewBag.mensaje
+            </div>
+        }
+
+        <section class="widget">
+            <a class="btn btn-lg btn-info" href="/Reporte/Load" role="button">Listar Reportes</a>
+            <a class="btn btn-lg btn-primary" href="/Home/Index" role="button">Inicio</a>
+        </section>
+    }
+    else
+    {
+<form action="/Reporte/Modificar" method="post">
+
+    <input type="hidden" class="form-control is-invalid" id="ID" name="ID" value=@Model.ID>
+    <input type="hidden" class="form-control is-invalid" id="DATECREATED" name="DATECREATED" value=@Model.DATECREATED>
+    <input type="hidden" class="form-control is-invalid" id="DATELASTMODIFICATION" name="DATELASTMODIFICATION" value=@Model.DATELASTMODIFICATION>
+    <input type="hidden" class="form-control is-invalid" id="DATEREPORTED" name="DATEREPORTED" value=@Model.DATEREPORTED>
+
+    <div class="form-group">
+        <label>Serial</label>
+        <textarea class="form-control is-invalid" id="SERIALSENSOR" name="SERIALSENSOR" placeholder="Introduzca el Serial del Dispositivo" maxlength="50">@Model.SERIALSENSOR</textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="inputuser">Medición</label>
+        <input type="number" step="any" class="form-control is-invalid" id="MEDICION" name="MEDICION" placeholder="Medicion" maxlength="50" value=@Model.MEDICION.ToString()>
+    </div>
+
+    <div class="form-row">
+        <label>Ubicación</label>
+        <div class="form-group  col-md-6">
+            <label>Latitud</label>
+            <input type="number" step="any" class="form-control is-invalid" id="LATITUD" name="LATITUD" placeholder="Latitud" value=@Model.LATITUD>
+        </div>
+        <div class="form-group  col-md-6">
+            <label>Longitud</label>
+            <input type="number" step="any" class="form-control is-invalid" id="LONGITUD" name="LONGITUD" placeholder="Longitud" value=@Model.LONGITUD>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+    }
+</section>
+    

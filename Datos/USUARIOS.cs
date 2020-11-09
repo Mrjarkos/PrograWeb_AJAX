@@ -15,11 +15,13 @@ namespace Datos
     public partial class USUARIOS
     {
         public int ID { get; set; }
-        public string ROL { get; set; }
         public string NOMBRE { get; set; }
         public string CORREO { get; set; }
         public string DOC_TYPE { get; set; }
         public string DOCUMENTO { get; set; }
         public string PASSWORD { get; set; }
+        public string ROL { get; set; }
+        public System.DateTime DATECREATED { get; set; }
+        public System.DateTime DATELASTMODIFICATION { get; set; }
     }
 }

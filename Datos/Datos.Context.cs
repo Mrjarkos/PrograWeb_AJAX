@@ -25,7 +25,8 @@ namespace Datos
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<SensorDevice> SensorDevice { get; set; }
         public virtual DbSet<USUARIOS> USUARIOS { get; set; }
+        public virtual DbSet<SENSORES> SENSORES { get; set; }
+        public virtual DbSet<REPORTES> REPORTES { get; set; }
     }
 }

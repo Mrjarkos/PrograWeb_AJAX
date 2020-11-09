@@ -1,0 +1,63 @@
+﻿@model Server.Models.Sensor
+@{
+    ViewBag.Title = "Modificar Sensor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-title">Sensores <small>Modificar</small></h2>
+<section class="widget col-md-8">
+    @if (ViewBag.mensaje != null)
+    {
+        if (ViewBag.error)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.mensaje
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success">
+                @ViewBag.mensaje
+            </div>
+        }
+
+        <section class="widget">
+            <a class="btn btn-lg btn-info" href="/Sensor/Load" role="button">Listar Sensores</a>
+            <a class="btn btn-lg btn-primary" href="/Home/Index" role="button">Inicio</a>
+        </section>
+    }
+    else
+    {
+    <form action="/Sensor/Modificar" method="post">
+
+        <input type="hidden" class="form-control is-invalid" id="ID" name="ID" value=@Model.ID>
+        <input type="hidden" class="form-control is-invalid" id="DATECREATED" name="DATECREATED" value=@Model.DATECREATED>
+        <input type="hidden" class="form-control is-invalid" id="DATELASTMODIFICATION" name="DATELASTMODIFICATION" value=@Model.DATELASTMODIFICATION>
+
+        <div class="form-group">
+            <label>Serial</label>
+            <textarea class="form-control is-invalid" id="SERIAL" name="SERIAL" placeholder="Introduzca el Serial del Dispositivo" maxlength="50">@Model.SERIAL</textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="inputuser">Tipo de Dispositivo</label>
+            <select id="TIPO" name="TIPO" class="form-control">
+                <option selected>GENÉRICO</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="password">Contraseña</label>
+            <input type="password" class="form-control is-invalid" id="PASSWORD" name="PASSWORD" placeholder="Password" maxlength="50" value=@Model.PASSWORD>
+        </div>
+
+        <div class="form-group">
+            <label for="inputDocumento">Descripción (Opcional)</label>
+            <textarea class="form-control is-invalid" id="DESCRIPCION" name="DESCRIPCION" placeholder="Introduzca una breve descripción del dispositivo" maxlength="270">@Model.DESCRIPCION</textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+    }
+</section>
+    

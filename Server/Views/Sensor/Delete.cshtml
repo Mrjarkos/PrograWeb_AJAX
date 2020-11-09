@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Borrar Sensor</h2>
+
+@if (ViewBag.mensaje != null)
+{
+    if (ViewBag.error)
+    {
+        <div class="alert alert-danger">
+            @ViewBag.mensaje
+        </div>
+    }
+    else
+    {
+        <div class="alert alert-success">
+            @ViewBag.mensaje
+        </div>
+    }
+
+    <section class="widget">
+        <a class="btn btn-lg btn-success" href="/Sensor/Load" role="button">Sensores</a>
+        <a class="btn btn-lg btn-primary" href="/Home/Index" role="button">Inicio</a>
+    </section>
+}

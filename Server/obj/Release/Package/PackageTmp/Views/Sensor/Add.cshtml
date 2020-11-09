@@ -1,0 +1,64 @@
+﻿@model Server.Models.Sensor
+@{
+    ViewBag.Title = "Adicionar Sensor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="page-title">Sensores <br /> <small>Añadir</small></h2>
+<section class="widget col-md-8">
+
+    @if (ViewBag.mensaje != null)
+    {
+        if (ViewBag.error)
+        {
+            <div class="alert alert-danger">
+                @ViewBag.mensaje
+            </div>
+        }
+        else
+        {
+            <div class="alert alert-success">
+                @ViewBag.mensaje
+            </div>
+        }
+
+        <section class="widget">
+            <a class="btn btn-lg btn-success" href="/Sensor/Add" role="button">Volver a Crear</a>
+            <a class="btn btn-lg btn-info" href="/Sensor/Load" role="button">Listar Sensores</a>
+            <a class="btn btn-lg btn-primary" href="/Home/Index" role="button">Inicio</a>
+        </section>
+    }
+    else
+    {
+
+        <form action="/Sensor/Guardar" method="post">
+            <div class="form-group">
+                <label>Serial</label>
+                <textarea class="form-control is-invalid" id="SERIAL" name="SERIAL" placeholder="Introduzca el Serial del Dispositivo" maxlength="50"></textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="inputuser">Tipo de Dispositivo</label>
+                <select id="TIPO" name="TIPO" class="form-control">
+                    <option selected>GENÉRICO</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" class="form-control is-invalid" id="PASSWORD" name="PASSWORD" placeholder="Password" maxlength="50">
+            </div>
+
+            <div class="form-group">
+                <label for="inputDocumento">Descripción (Opcional)</label>
+                <textarea class="form-control is-invalid" id="DESCRIPCION" name="DESCRIPCION" placeholder="Introduzca una breve descripción del dispositivo" maxlength="270"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+        </form>
+
+    }
+
+    <script src="~/Scripts/Maxlength.js"></script>
+
+</section>

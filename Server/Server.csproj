@@ -55,6 +55,9 @@
       <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.3.6.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Device">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -104,56 +107,6 @@
     <Content Include="Content\css\fonts\bootstrap\glyphicons-halflings-regular.svg" />
     <Content Include="Content\css\fonts\font-awesome\fontawesome-webfont.svg" />
     <Content Include="Content\css\LoginStyle.css" />
-    <Content Include="Content\img\1.png" />
-    <Content Include="Content\img\10.jpg" />
-    <Content Include="Content\img\11.jpg" />
-    <Content Include="Content\img\12.jpg" />
-    <Content Include="Content\img\13.png" />
-    <Content Include="Content\img\14.png" />
-    <Content Include="Content\img\15.png" />
-    <Content Include="Content\img\2.png" />
-    <Content Include="Content\img\3.png" />
-    <Content Include="Content\img\5.jpg" />
-    <Content Include="Content\img\6.jpg" />
-    <Content Include="Content\img\7.jpg" />
-    <Content Include="Content\img\8.jpg" />
-    <Content Include="Content\img\9.jpg" />
-    <Content Include="Content\img\alpha.png" />
-    <Content Include="Content\img\angular-logo.svg" />
-    <Content Include="Content\img\bg-pattern.svg" />
-    <Content Include="Content\img\bgnoise_lg.png" />
-    <Content Include="Content\img\bgnoise_lg_dark.png" />
-    <Content Include="Content\img\bgnoise_lg_transparent.png" />
-    <Content Include="Content\img\favicon.png" />
-    <Content Include="Content\img\glyphicons-halflings-dark.png" />
-    <Content Include="Content\img\glyphicons-halflings-white.png" />
-    <Content Include="Content\img\glyphicons-halflings.png" />
-    <Content Include="Content\img\hue.png" />
-    <Content Include="Content\img\jpeg\1.jpg" />
-    <Content Include="Content\img\jpeg\10.jpg" />
-    <Content Include="Content\img\jpeg\11.jpg" />
-    <Content Include="Content\img\jpeg\12.jpg" />
-    <Content Include="Content\img\jpeg\2.jpg" />
-    <Content Include="Content\img\jpeg\3.jpg" />
-    <Content Include="Content\img\jpeg\4.jpg" />
-    <Content Include="Content\img\jpeg\5.jpg" />
-    <Content Include="Content\img\jpeg\6.jpg" />
-    <Content Include="Content\img\jpeg\7.jpg" />
-    <Content Include="Content\img\jpeg\8.jpg" />
-    <Content Include="Content\img\jpeg\9.jpg" />
-    <Content Include="Content\img\jpeg\light-blue-laptop-transparent.png" />
-    <Content Include="Content\img\jpeg\light-blue-laptop-white.png" />
-    <Content Include="Content\img\jpeg\light-blue-phone.png" />
-    <Content Include="Content\img\jpeg\light-blue-preview-1.png" />
-    <Content Include="Content\img\js-logo.svg" />
-    <Content Include="Content\img\logo.png" />
-    <Content Include="Content\img\react-logo.svg" />
-    <Content Include="Content\img\saturation.png" />
-    <Content Include="Content\img\saturation2.png" />
-    <Content Include="Content\img\search-white.png" />
-    <Content Include="Content\img\search.png" />
-    <Content Include="Content\img\vue-logo.svg" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
@@ -1412,10 +1365,12 @@
     <Content Include="Scripts\lib\underscore\underscore-min.js" />
     <Content Include="Scripts\lib\underscore\underscore.js" />
     <Content Include="Scripts\lib\widgster\widgster.js" />
+    <Content Include="Scripts\Maxlength.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\Reportes.js" />
     <Content Include="Scripts\Sensores.js" />
     <Content Include="Scripts\src\index.js" />
     <Content Include="Scripts\src\methods\defaults.js" />
@@ -1484,12 +1439,14 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\Usuarios.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ReporteController.cs" />
     <Compile Include="Controllers\SensorController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
@@ -1497,21 +1454,18 @@
     </Compile>
     <Compile Include="Models\JsonTable.cs" />
     <Compile Include="Models\LoginUser.cs" />
+    <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\RegisterView.cs" />
+    <Compile Include="Models\Reporte.cs" />
     <Compile Include="Models\Sensor.cs" />
-    <Compile Include="Models\SensorView.cs" />
     <Compile Include="Models\Usuario.cs" />
-    <Compile Include="Models\UsuarioView.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <None Include="packages.config" />
     <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Sensor\index.cshtml" />
+    <Content Include="Views\Sensor\Load.cshtml" />
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
@@ -1542,6 +1496,13 @@
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Load.cshtml" />
     <Content Include="Views\User\Modify.cshtml" />
+    <Content Include="Views\Sensor\Add.cshtml" />
+    <Content Include="Views\Sensor\Delete.cshtml" />
+    <Content Include="Views\Sensor\Modify.cshtml" />
+    <Content Include="Views\Reporte\Load.cshtml" />
+    <Content Include="Views\Reporte\Add.cshtml" />
+    <Content Include="Views\Reporte\Delete.cshtml" />
+    <Content Include="Views\Reporte\Modify.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

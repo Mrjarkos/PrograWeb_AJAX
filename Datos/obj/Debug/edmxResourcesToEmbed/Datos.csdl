@@ -1,28 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="DatosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityContainer Name="DatosEntities" annotation:LazyLoadingEnabled="true">
-    <EntitySet Name="SensorDevice" EntityType="DatosModel.SensorDevice" />
     <EntitySet Name="USUARIOS" EntityType="DatosModel.USUARIOS" />
+    <EntitySet Name="SENSORES" EntityType="DatosModel.SENSORES" />
+    <EntitySet Name="REPORTES" EntityType="DatosModel.REPORTES" />
   </EntityContainer>
-  <EntityType Name="SensorDevice">
-    <Key>
-      <PropertyRef Name="ID_REG" />
-    </Key>
-    <Property Name="ID_REG" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ID_SENSOR" Type="Int32" Nullable="false" />
-    <Property Name="MEDICION" Type="Double" Nullable="false" />
-    <Property Name="FECHAYHORA" Type="DateTime" Nullable="false" Precision="3" />
-  </EntityType>
   <EntityType Name="USUARIOS">
     <Key>
       <PropertyRef Name="ID" />
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ROL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NOMBRE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="CORREO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DOC_TYPE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-    <Property Name="DOCUMENTO" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOC_TYPE" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOCUMENTO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PASSWORD" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ROL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DATECREATED" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DATELASTMODIFICATION" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="SENSORES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SERIAL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="PASSWORD" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TIPO" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DESCRIPCION" Type="String" MaxLength="270" FixedLength="false" Unicode="true" />
+    <Property Name="DATECREATED" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DATELASTMODIFICATION" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+  <EntityType Name="REPORTES">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SERIALSENSOR" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MEDICION" Type="Double" Nullable="false" />
+    <Property Name="LATITUD" Type="Double" Nullable="false" />
+    <Property Name="LONGITUD" Type="Double" Nullable="false" />
+    <Property Name="DATEREPORTED" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DATECREATED" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DATELASTMODIFICATION" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
 </Schema>

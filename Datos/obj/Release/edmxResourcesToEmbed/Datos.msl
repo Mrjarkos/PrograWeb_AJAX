@@ -1,25 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
   <EntityContainerMapping StorageEntityContainer="DatosModelStoreContainer" CdmEntityContainer="DatosEntities">
-    <EntitySetMapping Name="SensorDevice">
-      <EntityTypeMapping TypeName="DatosModel.SensorDevice">
-        <MappingFragment StoreEntitySet="SensorDevice">
-          <ScalarProperty Name="FECHAYHORA" ColumnName="FECHAYHORA" />
-          <ScalarProperty Name="MEDICION" ColumnName="MEDICION" />
-          <ScalarProperty Name="ID_SENSOR" ColumnName="ID_SENSOR" />
-          <ScalarProperty Name="ID_REG" ColumnName="ID_REG" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="USUARIOS">
       <EntityTypeMapping TypeName="DatosModel.USUARIOS">
         <MappingFragment StoreEntitySet="USUARIOS">
+          <ScalarProperty Name="DATELASTMODIFICATION" ColumnName="DATELASTMODIFICATION" />
+          <ScalarProperty Name="DATECREATED" ColumnName="DATECREATED" />
+          <ScalarProperty Name="ROL" ColumnName="ROL" />
           <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
           <ScalarProperty Name="DOCUMENTO" ColumnName="DOCUMENTO" />
           <ScalarProperty Name="DOC_TYPE" ColumnName="DOC_TYPE" />
           <ScalarProperty Name="CORREO" ColumnName="CORREO" />
           <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-          <ScalarProperty Name="ROL" ColumnName="ROL" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SENSORES">
+      <EntityTypeMapping TypeName="DatosModel.SENSORES">
+        <MappingFragment StoreEntitySet="SENSORES">
+          <ScalarProperty Name="DATELASTMODIFICATION" ColumnName="DATELASTMODIFICATION" />
+          <ScalarProperty Name="DATECREATED" ColumnName="DATECREATED" />
+          <ScalarProperty Name="DESCRIPCION" ColumnName="DESCRIPCION" />
+          <ScalarProperty Name="TIPO" ColumnName="TIPO" />
+          <ScalarProperty Name="PASSWORD" ColumnName="PASSWORD" />
+          <ScalarProperty Name="SERIAL" ColumnName="SERIAL" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="REPORTES">
+      <EntityTypeMapping TypeName="DatosModel.REPORTES">
+        <MappingFragment StoreEntitySet="REPORTES">
+          <ScalarProperty Name="DATELASTMODIFICATION" ColumnName="DATELASTMODIFICATION" />
+          <ScalarProperty Name="DATECREATED" ColumnName="DATECREATED" />
+          <ScalarProperty Name="DATEREPORTED" ColumnName="DATEREPORTED" />
+          <ScalarProperty Name="LONGITUD" ColumnName="LONGITUD" />
+          <ScalarProperty Name="LATITUD" ColumnName="LATITUD" />
+          <ScalarProperty Name="MEDICION" ColumnName="MEDICION" />
+          <ScalarProperty Name="SERIALSENSOR" ColumnName="SERIALSENSOR" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
