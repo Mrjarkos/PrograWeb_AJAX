@@ -102,8 +102,6 @@ namespace Server.Controllers
                         if (u.CORREO == user.CORREO && u.PASSWORD == user.PASSWORD)
                         {
                             user.NOMBRE = u.NOMBRE;
-                            ViewBag.mensaje = "Bienvenidos al Himalaya";
-                            ViewBag.User = u.NOMBRE;
 
                             //Cookie
                             string infoCookie = "SesionValida";
@@ -113,7 +111,6 @@ namespace Server.Controllers
                             cookie["UserRol"] = u.ROL.ToString();
                             cookie.Expires = Expire;
                             HttpContext.Response.Cookies.Add(cookie);
-
 
                             return RedirectToAction("Index", "Home");
                         }

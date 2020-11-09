@@ -17,6 +17,7 @@ namespace Server.Seguridad
             {
                 var Key = "SesionValida";
                 var REQ = filterContext.HttpContext.Request.Cookies[Key];
+                var ROUTE = filterContext.HttpContext.Request.RawUrl;
                 if (REQ == null)
                 {
                     filterContext.Result = new HttpUnauthorizedResult();
@@ -27,10 +28,15 @@ namespace Server.Seguridad
                     {
                         filterContext.Result = new HttpUnauthorizedResult();
                     }
+                    else
+                    {
+                        if (REQ["UserRol"].Equals("MONITOR") && (ROUTE.Contains("User") || ROUTE.Contains("Sensor")))
+                        {filterContext.Result = new HttpUnauthorizedResult();}
+                    }
                 }
 
             }
-            catch (Exception ex)
+            catch
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }

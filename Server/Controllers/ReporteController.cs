@@ -184,6 +184,7 @@ namespace Server.Controllers
         }
 
         [HttpPost]
+        [Seguridad.FiltroDisp]
         public string PostData(Models.Reporte reporte)
         {
             try
@@ -205,38 +206,49 @@ namespace Server.Controllers
                     });
                     context.SaveChanges();
                 }
-                return "OK," + JsonSerializer.Serialize(reporte); ;
+                return "OK" + JsonSerializer.Serialize(reporte); ;
             }
             catch (Exception ex)
             {
-                return "Error: " + ex.Message;
+                return "Transacción Rechazada- " + ex.Message;
             }
         }
 
         [HttpGet]
-        public string GetDateTime(string SERIALSENSOR)
+        public string GetDateTime(string SERIALSENSOR, int PASSWORD)
         {
             try
             {
                 using (var context = new DatosEntities())
                 {
-                    var u = context.SENSORES.SingleOrDefault(b => b.SERIAL == SERIALSENSOR);
-                    if (u == null)
+                    var us = context.SENSORES.ToArray();
+                    foreach (var u in us)
                     {
-                        return DateTime.Now.ToString("yyyy-mm-dd hh:mm:ss");
+                        if (u.SERIAL == SERIALSENSOR)
+                        {
+
+                            //Cookie
+                            string infoCookie = "DispositivoValido";
+                            var Expire = DateTime.Now.AddMinutes(10);
+                            HttpCookie cookie = new HttpCookie(infoCookie);
+                            cookie["ID"] = u.ID.ToString();
+                            cookie["NSerial"] = u.SERIAL.ToString();
+                            cookie.Expires = Expire;
+                            HttpContext.Response.Cookies.Add(cookie);
+
+                            return DateTime.Now.ToString();
+                        }
                     }
-                    else
-                    {
-                        throw new Exception("Serial de Dispositivo reportado desconocido");
-                    }   
+                    throw new Exception("Serial de Dispositivo reportado desconocido");
                 }
-                
             }
             catch (Exception ex)
             {
-                return "error:" + ex.Message;
+                return "Transacción Rechazada-" + ex.Message;
             }
         }
+
+
 
         [HttpGet]
         public JsonResult GetRegister(string id_search, string id_sensor_search,

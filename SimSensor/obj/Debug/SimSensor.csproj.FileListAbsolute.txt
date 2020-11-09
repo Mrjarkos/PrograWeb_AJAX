@@ -1,0 +1,7 @@
+C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\bin\Debug\SimSensor.exe.config
+C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\bin\Debug\SimSensor.exe
+C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\bin\Debug\SimSensor.pdb
+C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.csprojAssemblyReference.cache
+C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.csproj.CoreCompileInputs.cache
+C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.exe
+C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.pdb
