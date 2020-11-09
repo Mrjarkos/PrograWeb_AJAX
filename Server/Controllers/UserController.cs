@@ -9,18 +9,19 @@ namespace Server.Controllers
 {
     public class UserController : Controller
     {
-        
+
         // GET: User
+        [Seguridad.FiltroAut]
         public ActionResult Add()
         {
             return View();
         }
-
+        [Seguridad.FiltroAut]
         public ActionResult Load()
         {
             return View();
         }
-
+        [Seguridad.FiltroAut]
         public ActionResult Delete(string Id)
         {
             try
@@ -48,6 +49,7 @@ namespace Server.Controllers
         }
 
         [HttpPost]
+        [Seguridad.FiltroAut]
         public ActionResult Modify(string Id)
         {
             int id = int.Parse(Id);
@@ -81,6 +83,7 @@ namespace Server.Controllers
         }
 
         [HttpPost]
+        [Seguridad.FiltroAut]
         public ActionResult Modificar(Models.Usuario usuario)
         {
             int id = usuario.ID;
@@ -125,6 +128,7 @@ namespace Server.Controllers
 
         // POST: User
         [HttpPost]
+        [Seguridad.FiltroAut]
         public ActionResult Guardar(Models.Usuario usuario)
         {
             try
@@ -173,6 +177,7 @@ namespace Server.Controllers
         }
 
         [HttpGet]
+        [Seguridad.FiltroAut]
         public JsonResult GetRegister(string id_search, string id_user_search, string document_search, 
                                       string number_search, string email_search, string rol_search,
                                       string Creacion_search, string Modificacion_search, int Page, int N_items)

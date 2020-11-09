@@ -104,6 +104,17 @@ namespace Server.Controllers
                             user.NOMBRE = u.NOMBRE;
                             ViewBag.mensaje = "Bienvenidos al Himalaya";
                             ViewBag.User = u.NOMBRE;
+
+                            //Cookie
+                            string infoCookie = "SesionValida";
+                            var Expire = DateTime.Now.AddMinutes(10);
+                            HttpCookie cookie = new HttpCookie(infoCookie);
+                            cookie["UserName"] = u.NOMBRE.ToString();
+                            cookie["UserRol"] = u.ROL.ToString();
+                            cookie.Expires = Expire;
+                            HttpContext.Response.Cookies.Add(cookie);
+
+
                             return RedirectToAction("Index", "Home");
                         }
                     }

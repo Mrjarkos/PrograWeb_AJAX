@@ -197,3 +197,22 @@ D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\b
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Text.Json.xml
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Threading.Tasks.Extensions.xml
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.ValueTuple.xml
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Buffers.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Device.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Memory.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Numerics.Vectors.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Text.Encodings.Web.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Text.Json.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Threading.Tasks.Extensions.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.ValueTuple.dll
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\Microsoft.Bcl.AsyncInterfaces.xml
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Buffers.xml
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Memory.xml
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Numerics.Vectors.xml
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Runtime.CompilerServices.Unsafe.xml
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Text.Encodings.Web.xml
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Text.Json.xml
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.Threading.Tasks.Extensions.xml
+C:\Users\willi\source\repos\PrograWeb_AJAX\Server\bin\System.ValueTuple.xml

@@ -9,17 +9,19 @@ namespace Server.Controllers
 {
     public class SensorController : Controller
     {
+        [Seguridad.FiltroAut]
         public ActionResult Load()
         {
             return View();
         }
-
+        [Seguridad.FiltroAut]
         public ActionResult Add()
         {
             return View();
         }
 
         [HttpPost]
+        [Seguridad.FiltroAut]
         public ActionResult Guardar(Models.Sensor sensor)
         {
             try
@@ -65,6 +67,7 @@ namespace Server.Controllers
             return View("Add");
         }
 
+        [Seguridad.FiltroAut]
         public ActionResult Delete(string Id)
         {
             try
@@ -92,6 +95,7 @@ namespace Server.Controllers
         }
 
         [HttpPost]
+        [Seguridad.FiltroAut]
         public ActionResult Modify(string Id) //Cargar View
         {
             Models.Sensor sensor = new Models.Sensor();
@@ -123,6 +127,7 @@ namespace Server.Controllers
         }
 
         [HttpPost]
+        [Seguridad.FiltroAut]
         public ActionResult Modificar(Models.Sensor sensor)
         {
             int id = sensor.ID;
@@ -167,6 +172,7 @@ namespace Server.Controllers
         }
 
         [HttpGet]
+        [Seguridad.FiltroAut]
         public JsonResult GetRegister(string id_search, string id_sensor_search,
                                       string tipo_search, string Creacion_search,
                                       string Modificacion_search, int Page, int N_items)

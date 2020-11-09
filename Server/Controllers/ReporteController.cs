@@ -14,16 +14,19 @@ namespace Server.Controllers
     public class ReporteController : Controller
     {
         // GET: Registro
+        [Seguridad.FiltroAut]
         public ActionResult Load()
         {
             return View();
         }
 
+        [Seguridad.FiltroAut]
         public ActionResult Graficar()
         {
             return View();
         }
 
+        [Seguridad.FiltroAut]
         public ActionResult Add()
         {
             return View();
@@ -76,6 +79,7 @@ namespace Server.Controllers
             return View("Add");
         }
 
+        [Seguridad.FiltroAut]
         public ActionResult Delete(string Id)
         {
             try
@@ -103,6 +107,7 @@ namespace Server.Controllers
         }
 
         [HttpPost]
+        [Seguridad.FiltroAut]
         public ActionResult Modify(string Id) //Cargar View
         {
             Models.Reporte reporte = new Models.Reporte();

@@ -8,6 +8,7 @@ namespace Server.Controllers
 {
     public class HomeController : Controller
     {
+        [Seguridad.FiltroAut]
         public ActionResult Index()
         {
             return View();

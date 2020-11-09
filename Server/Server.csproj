@@ -1489,6 +1489,8 @@
     <Compile Include="Models\Sensor.cs" />
     <Compile Include="Models\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Seguridad\FiltroAut.cs" />
+    <Compile Include="Seguridad\FiltroDisp.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
