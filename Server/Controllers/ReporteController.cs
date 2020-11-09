@@ -6,6 +6,8 @@ using System.Web.Mvc;
 using Datos;
 using Server.Models;
 using System.Data.Entity.Spatial;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Server.Controllers
 {
@@ -16,6 +18,12 @@ namespace Server.Controllers
         {
             return View();
         }
+
+        public ActionResult Graficar()
+        {
+            return View();
+        }
+
         public ActionResult Add()
         {
             return View();
@@ -32,17 +40,8 @@ namespace Server.Controllers
                 {
                     using (var context = new DatosEntities())
                     {
-                        bool serial_exist = false;
-                        var us = context.SENSORES.ToArray();
-                        foreach (var u in us)
-                        {
-                            if (u.SERIAL == reporte.SERIALSENSOR)
-                            {
-                                serial_exist = true;
-                                break;
-                            }
-                        }
-                        if (serial_exist)
+                        var u = context.SENSORES.SingleOrDefault(b => b.SERIAL == reporte.SERIALSENSOR);   
+                        if (u==null)
                         {
                             context.REPORTES.Add(new REPORTES
                             {
@@ -179,56 +178,66 @@ namespace Server.Controllers
             return View("Modify");
         }
 
-        //[httppost]
-        //public string postdata(string serial, float medicion)
-        //{
-        //    try
-        //    {
-        //        datetime fechayhora = datetime.now;
-        //        var respuesta = new { resultado = "ok", medicion = medicion, fechayhora = fechayhora, id = id };
-        //        var numero = respuesta.medicion;
+        [HttpPost]
+        public string PostData(Models.Reporte reporte)
+        {
+            try
+            {
+                DateTime fechayhora = DateTime.Now;
+                DateTime dateTime = DateTime.Now;
 
+                using (var context = new DatosEntities())
+                {
+                    context.REPORTES.Add(new Datos.REPORTES
+                    {
+                        SERIALSENSOR = reporte.SERIALSENSOR,
+                        DATEREPORTED = reporte.DATEREPORTED,
+                        LATITUD = reporte.LATITUD,
+                        LONGITUD = reporte.LONGITUD,
+                        MEDICION = reporte.MEDICION,
+                        DATECREATED = dateTime,
+                        DATELASTMODIFICATION = dateTime
+                    });
+                    context.SaveChanges();
+                }
+                return "OK," + JsonSerializer.Serialize(reporte); ;
+            }
+            catch (Exception ex)
+            {
+                return "Error: " + ex.Message;
+            }
+        }
 
-        //        using (var context = new datosentities())
-        //        {
-        //            context.sensores.add(new datos.sensores
-        //            {
-        //                id = respuesta.id,
-        //                serial = 
-        //                medicion = numero,
-        //                fechayhora = respuesta.fechayhora,
-        //            });
-        //            context.savechanges();
-        //        }
-        //        return respuesta.id + " " + respuesta.medicion + " " + respuesta.fechayhora + " " + respuesta.resultado;
-        //    }
-        //    catch (exception ex)
-        //    {
-        //        return "error: " + ex.message;
-        //    }
-        //}
-
-        //[httpget]
-        //public string getdatetime(int id)
-        //{
-        //    try
-        //    {
-
-        //        var autorizatedid = new list<int> { 33, 22, 11, 99 };
-        //        if (!autorizatedid.exists(x => x == id)) throw new exception("device: id desconocido");
-        //        return datetime.now.tostring("yyyy-mm-dd hh:mm:ss");
-        //    }
-        //    catch (exception ex)
-        //    {
-        //        return "error:" + ex.message;
-        //    }
-        //}
+        [HttpGet]
+        public string GetDateTime(string SERIALSENSOR)
+        {
+            try
+            {
+                using (var context = new DatosEntities())
+                {
+                    var u = context.SENSORES.SingleOrDefault(b => b.SERIAL == SERIALSENSOR);
+                    if (u == null)
+                    {
+                        return DateTime.Now.ToString("yyyy-mm-dd hh:mm:ss");
+                    }
+                    else
+                    {
+                        throw new Exception("Serial de Dispositivo reportado desconocido");
+                    }   
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                return "error:" + ex.Message;
+            }
+        }
 
         [HttpGet]
         public JsonResult GetRegister(string id_search, string id_sensor_search,
                                       string medicion_search, string latitud_search,
                                       string longitud_search,
-                                      string Reported_search, string Modificacion_search,
+                                      string Date_init_search, string Date_final_search,
                                       int Page, int N_items)
         {
             bool Contain = false;
@@ -245,16 +254,13 @@ namespace Server.Controllers
                     var us = context.REPORTES.ToArray();
                     foreach (var u in us)
                     {
-                        var creacion = u.DATECREATED;
-                        var reported = u.DATEREPORTED;
+                        var dateToCheck = u.DATEREPORTED;
                         var modificacion = u.DATELASTMODIFICATION;
                         Contain = u.ID.ToString().Contains(id_search) &&
                                   u.SERIALSENSOR.ToString().Contains(id_sensor_search) &&
                                   u.MEDICION.ToString().Contains(medicion_search) &&
                                   u.LONGITUD.ToString().Contains(longitud_search) &&
-                                  u.LATITUD.ToString().Contains(latitud_search) &&
-                                  reported.ToString("dd-MM-yy HH:mm:ss").Contains(Reported_search) &&
-                                  modificacion.ToString("dd-MM-yy HH:mm:ss").Contains(Modificacion_search);
+                                  u.LATITUD.ToString().Contains(latitud_search);
                         if (Contain)
                         {
                             modelo.Registros.Add(new Models.Reporte

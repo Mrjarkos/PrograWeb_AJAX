@@ -3,9 +3,10 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2 class="page-title">Administración de Reportes <br /> <small>Listar Mediciones de Sensores</small></h2>
+<h2 class="page-title">Reportes de Ruido<br /> <small>Listar Mediciones de Sensores</small></h2>
+
 <section class="widget">
-    <a class="btn btn-lg btn-success" href="/Reporte/Add" role="button">Crear</a>
+    <a class="btn btn-lg btn-success" href="/Reporte/Graficar" role="button">Graficar Datos</a>
 </section>
 
 @if (ViewBag.mensaje != null)
@@ -29,11 +30,6 @@
         <h4>
             Reportes de Sensores en la base de datos
         </h4>
-        <div class="widget-controls">
-            <a data-widgster="expand" title="Expandir" href="#"><i class="glyphicon glyphicon-plus"></i></a>
-            <a data-widgster="collapse" title="Colapsar" href="#"><i class="glyphicon glyphicon-minus"></i></a>
-            <a data-widgster="close" title="Cerrar" href="#"><i class="glyphicon glyphicon-remove"></i></a>
-        </div>
     </header>
     <div class="widget-table-overflow mt-3">
         <form>
@@ -61,9 +57,7 @@
                     <th>Latitud</th>
                     <th>Longitud</th>
                     <th>Fecha Reportada</th>
-                    <th>Fecha de Última Modificación</th>
-                    <th>Editar</th>
-                    <th>Borrar</th>
+                    <th>
                 </tr>
                 <tr>
                     <th><input type="text" class="form-control" id="id_search" name="id_search" placeholder="Id" /></th>
@@ -71,10 +65,8 @@
                     <th><input type="text" class="form-control" id="medicion_search" name="medicion_search" placeholder="Medicion" /></th>
                     <th><input type="text" class="form-control" id="latitud_search" name="latitud_search" placeholder="Latitud" /></th>
                     <th><input type="text" class="form-control" id="longitud_search" name="longitud_search" placeholder="Longitud" /></th>
-                    <th><input type="text" class="form-control" id="Reported_search" name="Reported_search" placeholder="Fecha de Reporte" /></th>
-                    <th><input type="text" class="form-control" id="Modificacion_search" name="Modificacion_search" placeholder="Fecha de Modificación" /></th>
-                    <th>
-                    <th>
+                    <th><input type="text" class="form-control" id="Date_init_search" name="Date_init_search" placeholder="Fecha Inicial" /></th>
+                    <th><input type="text" class="form-control" id="Date_final_search" name="Date_final_search" placeholder="Fecha Final" /></th>
                 </tr>
             </thead>
             <tbody id="MyTbody" name="MyTbody">

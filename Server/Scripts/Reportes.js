@@ -5,8 +5,8 @@
     medicion_search.addEventListener('keyup', function () { PedirDatos() });
     longitud_search.addEventListener('keyup', function () { PedirDatos() });
     latitud_search.addEventListener('keyup', function () { PedirDatos() });
-    Reported_search.addEventListener('keyup', function () { PedirDatos() });
-    Modificacion_search.addEventListener('keyup', function () { PedirDatos() });
+    Date_init_search.addEventListener('keyup', function () { PedirDatos() });
+    Date_final_search.addEventListener('keyup', function () { PedirDatos() });
     N_items_select.addEventListener('change', function () { PedirDatos() });
 
     B0.addEventListener('click', function () { PedirDatos(B0.value) });
@@ -39,7 +39,7 @@ function PedirDatos(page) {
     var parameters = "?id_search=" + id_search.value + "&" + "id_sensor_search=" + id_sensor_search.value +
         "&" + "medicion_search=" + medicion_search.value + "&" + "latitud_search=" + latitud_search.value +
         "&" + "longitud_search=" + longitud_search.value + 
-        "&" + "Reported_search=" + Reported_search.value + "&" + "Modificacion_search=" + Modificacion_search.value +
+        "&" + "Date_init_search=" + Date_init_search.value + "&" + "Date_final_search=" + Date_final_search.value +
         "&" + "Page=" + page + "&" + "N_items=" + N_items_select.value;
     var xh = new XMLHttpRequest();
     xh.open("GET", "/Reporte/GetRegister" + parameters, true)
@@ -77,36 +77,7 @@ function ListRegister(Registros) {
         cell = row.insertCell(5);
         var value = new Date(parseInt(Registros["Registros"][i].DATEREPORTED.substr(6)));
         cell.innerHTML = formatted_date(value);
-        cell = row.insertCell(6);
-        var value = new Date(parseInt(Registros["Registros"][i].DATELASTMODIFICATION.substr(6)));
-        cell.innerHTML = formatted_date(value);
-
-        cell = row.insertCell(7);
-        var form = document.createElement('form');
-        form.action = "/Reporte/Modify";
-        form.method = "post";
-        var button = document.createElement('button');
-        button.className = "btn btn-warning glyphicon glyphicon-pencil";
-        button.type = "submit";
-        button.name = "Id";
-        button.value = Registros["Registros"][i].ID.toString();
-        button.id = i;
-        form.appendChild(button)
-        cell.appendChild(form);
-
-        cell = row.insertCell(8);
-        var form = document.createElement('form');
-        form.action = "/Reporte/Delete";
-        form.method = "post";
-        var button = document.createElement('button');
-        button.className = "btn btn-danger glyphicon glyphicon-remove";
-        button.type = "submit";
-        button.name = "Id";
-        button.value = Registros["Registros"][i].ID.toString();
-        button.id = i;
-        form.appendChild(button)
-        cell.appendChild(form);
-
+        
         Paginas(parseInt(Registros["PaginaActual"]), parseInt(Registros["TotalPaginas"]));
     }
 }
