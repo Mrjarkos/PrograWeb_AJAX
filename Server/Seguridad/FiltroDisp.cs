@@ -33,7 +33,10 @@ namespace Server.Seguridad
 
         public void OnAuthenticationChallenge(AuthenticationChallengeContext filterContext)
         {
-
+            if (filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult)
+            {
+                filterContext.Result = new RedirectResult("/Login/Login", false);
+            }
         }
     }
 
