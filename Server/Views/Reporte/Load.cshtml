@@ -5,10 +5,6 @@
 
 <h2 class="page-title">Reportes de Ruido<br /> <small>Listar Mediciones de Sensores</small></h2>
 
-<section class="widget">
-    <a class="btn btn-lg btn-success" href="/Reporte/Graficar" role="button">Graficar Datos</a>
-</section>
-
 @if (ViewBag.mensaje != null)
 {
     if (ViewBag.error)
@@ -24,6 +20,7 @@
         </div>
     }
 }
+
 
 <section class="widget">
     <header>
@@ -46,18 +43,20 @@
                         <option>100</option>
                     </select>
                 </div>
+                <div class="col-md-1">
+                    <a class="btn btn-lg btn-primary" name="filter_bnt" id="filter_bnt" role="button">Borrar Filtros</a>
+                </div>
             </div>
         </form>
         <table id="myTable" class="table table-striped table-lg mt-sm mb-0 sources-table">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <th style="vertical-align:central">Id</th>
                     <th>Serial del Sensor</th>
                     <th>Medición</th>
                     <th>Latitud</th>
                     <th>Longitud</th>
-                    <th>Fecha Reportada</th>
-                    <th>
+                    <th colspan="2">Fecha Reportada</th>
                 </tr>
                 <tr>
                     <th><input type="text" class="form-control" id="id_search" name="id_search" placeholder="Id" /></th>
@@ -65,8 +64,18 @@
                     <th><input type="text" class="form-control" id="medicion_search" name="medicion_search" placeholder="Medicion" /></th>
                     <th><input type="text" class="form-control" id="latitud_search" name="latitud_search" placeholder="Latitud" /></th>
                     <th><input type="text" class="form-control" id="longitud_search" name="longitud_search" placeholder="Longitud" /></th>
-                    <th><input type="text" class="form-control" id="Date_init_search" name="Date_init_search" placeholder="Fecha Inicial" /></th>
-                    <th><input type="text" class="form-control" id="Date_final_search" name="Date_final_search" placeholder="Fecha Final" /></th>
+                    <th>
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                            <label class="control-label" for="Date_init_search">Start Date</label>
+                            <input type="datetime-local" class="form-control" id="Date_init_search" name="Date_init_search" placeholder="Fecha Inicial">
+                        </div>
+                    </th>
+                    <th>
+                        <div class="form-group pmd-textfield pmd-textfield-floating-label">
+                            <label class="control-label" for="Date_final_search">End Date</label>
+                            <input type="datetime-local" class="form-control" id="Date_final_search" name="Date_final_search" placeholder="Fecha Final">
+                        </div>
+                    </th>
                 </tr>
             </thead>
             <tbody id="MyTbody" name="MyTbody">
@@ -90,5 +99,39 @@
         <input type="button" class="btn btn-info" value="&raquo" id="Bfollow" />
     </div>
 
-    <script src="~/Scripts/Reportes.js"></script>
 </section>
+
+<script src="~/Scripts/js/Chart.js"></script>
+<script src="~/Scripts/utils.js"></script>
+
+<section class="widget">
+    <a class="btn btn-lg btn-success" name="grafic_bnt" id="grafic_bnt" role="button">Graficar Datos</a>
+</section>
+<style>
+    canvas {
+        -moz-user-select: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
+        fill: #ffffff;
+    }
+</style>
+
+<section class="widget">
+    <header>
+        <h4>
+            Datos de Ruido promedio por fecha
+        </h4>
+    </header>
+    <div class="m-2">
+        <canvas id="canvas"></canvas>
+    </div>
+</section>
+
+<script src="~/Scripts/Reportes.js"></script>
+
+<script>
+    document.getElementById("Sensor").class = "panel";
+    document.getElementById("Home").class = "panel";
+    document.getElementById("User").class = "panel";
+    document.getElementById("Reporte").class = "active";
+</script>

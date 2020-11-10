@@ -202,8 +202,8 @@ namespace Server.Controllers
                                   u.DOCUMENTO.Contains(number_search) &&
                                   u.CORREO.Contains(email_search) &&
                                   u.ROL.Contains(rol_search) &&
-                                  u.CORREO.Contains(Creacion_search) &&
-                                  u.CORREO.Contains(Modificacion_search);
+                                  u.DATECREATED.ToString().Contains(Creacion_search) &&
+                                  u.DATELASTMODIFICATION.ToString().Contains(Modificacion_search);
                         if (Contain)
                         {
                             modelo.Registros.Add(new Models.Usuario

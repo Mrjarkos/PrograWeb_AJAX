@@ -15,48 +15,55 @@
                       https://code.google.com/p/chromium/issues/detail?id=332189
         */
     </script>
+
 </head>
 <body>
     <div class="logo">
-        <h3><a href="/Home/Index">Monitor de Ruido <strong>WJ</strong></a></h>
+        <h3><a href="/Home/Index">Noise <br/>Monitor<br /></a></h3>
     </div>
     <nav id="sidebar" class="sidebar nav-collapse collapse">
         <ul id="side-nav" class="side-nav">
-            <li class="active">
+            <li class="active" name="Monitor" id="Home">
                 <a href="/Home/Index"><i class="fa fa-home"></i> <span class="name">Principal</span></a>
             </li>
-            <li class="panel ">
+
+            <li class="panel" name="Admin" id="User">
                 <a href="/User/Load"><i class="fa fa-magic"></i> <span class="name">Usuarios</span></a>
             </li>
-            <li class="panel ">
+            <li class="panel" name="Admin" id="Sensor">
                 <a href="/Sensor/Load"><i class="fa fa-magic"></i> <span class="name">Sensores</span></a>
             </li>
-            <li class="panel ">
+            <li class="panel" name="Monitor" id="Reporte">
                 <a href="/Reporte/Load"><i class="fa fa-magic"></i> <span class="name">Registros</span></a>
             </li>
         </ul>
+        <br />
+        <ul id="account-menu" role="menu">
+            <li role="presentation">
+                <h4>Bienvenido</h4>
+            </li>
+            <li role="presentation" class="account-picture">
+                <img src="~/Content/img/1.png" alt="">
+            </li>
+            <li role="presentation">
+                <label id="Usernombre"></label>
+            </li>
+            <li role="presentation">
+                <a>
+                    <i class="fa fa-user"></i>
+                    <label id="UserRol"></label>
+                </a>
+            </li>
+            
+        </ul>
+       
+        
+
     </nav>
     <div class="wrap">
         <header class="page-header">
             <div class="navbar">
                 <ul class="nav navbar-nav navbar-right pull-right">
-                    <li class="hidden-xs">
-                        <a href="#" id="settings"
-                           title="Settings"
-                           data-toggle="popover"
-                           data-placement="bottom">
-                            <i class="glyphicon glyphicon-cog"></i>
-                        </a>
-                    </li>
-                    <li class="visible-xs">
-                        <a href="#"
-                           class="btn-navbar"
-                           data-toggle="collapse"
-                           data-target=".sidebar"
-                           title="">
-                            <i class="fa fa-bars"></i>
-                        </a>
-                    </li>
                     <li class="hidden-xs"><a href="/Login/Login"><i class="glyphicon glyphicon-off"></i></a></li>
                 </ul>
             </div>
@@ -69,66 +76,24 @@
         </div>
     </div>
 
- 
+    <script>
+        var x = document.cookie;
+        var rol = x.split("UserRol=")[1];
+        var nombre = x.split("&UserRol=")[0].split("UserName=")[1];
+
+        if (x.split("UserRol=")[1] == "MONITOR") {
+            elements = document.getElementsByName("Admin");
+            for (i = 0; i < elements.length; i++) {
+                elements[i].hidden = true;
+            }
+        }
+        document.getElementById("Usernombre").innerText  = "Nombre: " + nombre;
+        document.getElementById("UserRol").innerText  = "Rol: " + rol;
+    </script>
     <!-- common libraries. required for every page-->
     <script src="~/Scripts/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/Scripts/lib/jquery-pjax/jquery.pjax.js"></script>
     <script src="~/Scripts/lib/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
-    <script src="~/Scripts/lib/widgster/widgster.js"></script>
-    <script src="~/Scripts/lib/underscore/underscore.js"></script>
-
-    <!-- common application js -->
-    <script src="~/Scripts/js/app.js"></script>
-    <script src="~/Scripts/js/settings.js"></script>
-
-    <!-- common templates -->
-    <script type="text/template" id="settings-template">
-        <div class="setting clearfix">
-            <div>Lado de Barra lateral</div>
-            <div id="sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
-                <% onRight = sidebar == 'right'%>
-                <button type="button" data-value="left" class="btn btn-sm btn-default <%= onRight? '' : 'active' %>">Izq</button>
-                <button type="button" data-value="right" class="btn btn-sm btn-default <%= onRight? 'active' : '' %>">Der</button>
-            </div>
-        </div>
-        <div class="setting clearfix">
-            <div>Barra Lateral</div>
-            <div id="display-sidebar-toggle" class="pull-left btn-group" data-toggle="buttons-radio">
-                <% display = displaySidebar%>
-                <button type="button" data-value="true" class="btn btn-sm btn-default <%= display? 'active' : '' %>">Most</button>
-                <button type="button" data-value="false" class="btn btn-sm btn-default <%= display? '' : 'active' %>">Ocul</button>
-            </div>
-        </div>
-    </script>
-
-    <script type="text/template" id="sidebar-settings-template">
-        <% auto = sidebarState == 'auto'%>
-        <% if (auto) {%>
-        <button type="button"
-                data-value="icons"
-                class="btn-icons btn btn-transparent btn-sm">
-            Icons
-        </button>
-        <button type="button"
-                data-value="auto"
-                class="btn-auto btn btn-transparent btn-sm">
-            Auto
-        </button>
-        <%} else {%>
-        <button type="button"
-                data-value="auto"
-                class="btn btn-transparent btn-sm">
-            Auto
-        </button>
-        <% } %>
-    </script>
-
-    <!-- page specific scripts -->
-    <!-- page libs --> 
-    <script src="~/Scripts/lib/jquery.sparkline/index.js"></script>
-
-    <!-- page application js -->
-    <script src="~/Scripts/js/index.js"></script>
 
     <!-- page template -->
     <script type="text/template" id="message-template">

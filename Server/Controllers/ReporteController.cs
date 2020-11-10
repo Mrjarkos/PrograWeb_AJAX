@@ -21,12 +21,6 @@ namespace Server.Controllers
         }
 
         [Seguridad.FiltroAut]
-        public ActionResult Graficar()
-        {
-            return View();
-        }
-
-        [Seguridad.FiltroAut]
         public ActionResult Add()
         {
             return View();
@@ -248,8 +242,6 @@ namespace Server.Controllers
             }
         }
 
-
-
         [HttpGet]
         public JsonResult GetRegister(string id_search, string id_sensor_search,
                                       string medicion_search, string latitud_search,
@@ -272,12 +264,21 @@ namespace Server.Controllers
                     foreach (var u in us)
                     {
                         var dateToCheck = u.DATEREPORTED;
-                        var modificacion = u.DATELASTMODIFICATION;
                         Contain = u.ID.ToString().Contains(id_search) &&
                                   u.SERIALSENSOR.ToString().Contains(id_sensor_search) &&
                                   u.MEDICION.ToString().Contains(medicion_search) &&
                                   u.LONGITUD.ToString().Contains(longitud_search) &&
                                   u.LATITUD.ToString().Contains(latitud_search);
+                        if (Date_init_search != "")
+                        {
+                            var a = DateTime.Parse(Date_init_search);
+                            Contain = Contain && (dateToCheck >= DateTime.Parse(Date_init_search));
+                        }
+                        if (Date_final_search != "")
+                        {
+                            Contain = Contain && (dateToCheck <= DateTime.Parse(Date_final_search));
+                        }
+
                         if (Contain)
                         {
                             modelo.Registros.Add(new Models.Reporte
@@ -310,6 +311,73 @@ namespace Server.Controllers
             }
             return Json(Responce, JsonRequestBehavior.AllowGet);
         }
+
+        [HttpGet]
+        public JsonResult GetPlotData(string id_search, string id_sensor_search,
+                                      string medicion_search, string latitud_search,
+                                      string longitud_search,
+                                      string Date_init_search, string Date_final_search)
+        {
+            bool Contain = false;
+
+           
+            var puntos = new List<Models.DatePoint>();
+            var Response = new Models.PlotData();
+
+            ViewBag.error = false;
+            try
+            {
+                using (var context = new Datos.DatosEntities())
+                {
+                    var us = context.REPORTES.ToArray();
+                    foreach (var u in us)
+                    {
+                        var dateToCheck = u.DATEREPORTED;
+                        var modificacion = u.DATELASTMODIFICATION;
+                        Contain = u.ID.ToString().Contains(id_search) &&
+                                  u.SERIALSENSOR.ToString().Contains(id_sensor_search) &&
+                                  u.MEDICION.ToString().Contains(medicion_search) &&
+                                  u.LONGITUD.ToString().Contains(longitud_search) &&
+                                  u.LATITUD.ToString().Contains(latitud_search);
+                        if (Date_init_search != "")
+                        {
+                            var a = DateTime.Parse(Date_init_search);
+                            Contain = Contain && (dateToCheck >= DateTime.Parse(Date_init_search));
+                        }
+                        if (Date_final_search != "")
+                        {
+                            Contain = Contain && (dateToCheck <= DateTime.Parse(Date_final_search));
+                        }
+
+                        if (Contain)
+                        {
+                            puntos.Add(new DatePoint()
+                            {
+                                x = new DateTime(u.DATEREPORTED.Year, u.DATEREPORTED.Month, u.DATEREPORTED.Day, u.DATEREPORTED.Hour, 0, 0),
+                                y = u.MEDICION,
+                                SensorID = u.SERIALSENSOR
+                            });
+                        }
+                    }
+
+                    var puntosGroupedByCountry = puntos.GroupBy(i => i.x).Select(g => new DatePoint{x=g.Key, y=g.Average(i=>i.y)});
+
+
+                    Response = new Models.PlotData()
+                    {
+                        datos = puntosGroupedByCountry
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.error = true;
+                ViewBag.mensaje = "Error:" + ex.Message.ToString();
+            }
+            return Json(Response, JsonRequestBehavior.AllowGet);
+        }
+
+
 
         public static DbGeography CreatePoint(double lat, double lon, int srid = 4326)
         {

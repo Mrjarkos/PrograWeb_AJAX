@@ -5,3 +5,10 @@ C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.csprojA
 C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.csproj.CoreCompileInputs.cache
 C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.exe
 C:\Users\willi\source\repos\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\SimSensor\bin\Debug\SimSensor.exe.config
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\SimSensor\bin\Debug\SimSensor.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\SimSensor\bin\Debug\SimSensor.pdb
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.csprojAssemblyReference.cache
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.csproj.CoreCompileInputs.cache
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.exe
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\SimSensor\obj\Debug\SimSensor.pdb

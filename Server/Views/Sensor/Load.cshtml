@@ -47,6 +47,9 @@
                         <option>100</option>
                     </select>
                 </div>
+                <div class="col-md-1">
+                    <a class="btn btn-lg btn-primary" name="filter_bnt" id="filter_bnt" role="button">Borrar Filtros</a>
+                </div>
             </div>
         </form>
 
@@ -96,9 +99,12 @@
     <script src="~/Scripts/Sensores.js"></script>
 </section>
 
-
-
-
+<script>
+    document.getElementById("Sensor").class = "active";
+    document.getElementById("Home").class = "panel";
+    document.getElementById("User").class = "panel";
+    document.getElementById("Reporte").class = "panel";
+</script>
 
 
 
