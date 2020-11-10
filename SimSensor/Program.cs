@@ -1,120 +1,152 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SimSensor
 {
- 
-    class Program{
-        private static string CookieDisp;
+
+    class Program
+    {
+
+        public static string CookieDisp { get; set; }
+        public static bool Access { get; set; }
+        public static string Message { get; set; }
+        public static DateTime Comp { get; set; }
+        public static DateTime Comp1 { get; set; }
+        public static string HOST { get; set; }
+        public static int PORT { get; set; }
+        public static string Serial { get; set; }
+        public static string PASSWORD { get; set; }
 
         static void Main(string[] args)
+        {
+
+            HOST = "localhost";
+            PORT = 3197;
+            Serial = "NS185";
+            PASSWORD = "1234";
+
+            CookieDisp = " ";
+            Message = "OK";
+
+
+
+            Console.ReadKey();
+            while (true)
             {
-                while (true)
+
+                while (CookieDisp.Equals(" "))
+                {
+                    GETLogin();
+                }
+
+                //ReadCookie(CookieDisp);
+                System.Threading.Thread.Sleep(1000);
+                string GH = " ";
+                Console.WriteLine("Listo....");
+                GH = GETMessage();
+                while (Message.Equals("unauthorized"))
+                {
+                    GH = GETMessage();
+                }
+
+                System.Threading.Thread.Sleep(1000);
+                if (!GH.Equals(" "))
+                {
+                    PUTMessage(GH);
+                }
+                while (Message.Equals("unauthorized"))
+                {
+                    PUTMessage(GH);
+                }
+
+                System.Threading.Thread.Sleep(1000);
+
+                if (Comp1 > Comp)
                 {
                     CookieDisp = " ";
-                    System.Threading.Thread.Sleep(1000);
-                    string GH = " ";
-                    Console.WriteLine("Listo....");
-                    Console.ReadKey();
-                    GH = GETMessage();
-                    Console.WriteLine(CookieDisp);
-                    System.Threading.Thread.Sleep(1000);
-                    if (!GH.Equals(" "))
-                    {
-                        PUTMessage(GH);
-                    }
                 }
-
             }
 
-            static void Analisis(string Respuesta)
-            {
-                var Mensaje = Respuesta.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None);
-                var header = Mensaje[0];
-                var body = Mensaje[1];
+        }
 
-                var FieldHeader = header.Split(new string[] { "\r\n" }, StringSplitOptions.None);
-                var InformeR = FieldHeader[0].Split(new char[] { ' ' });
+        static void Analisis(string Respuesta)
+        {
+            var Mensaje = Respuesta.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None);
+            var header = Mensaje[0];
 
-                if (InformeR[1] == "200") { Console.WriteLine("OK"); }
-                else { Console.WriteLine("NOK"); }
-            }
+            var FieldHeader = header.Split(new string[] { "\r\n" }, StringSplitOptions.None);
+            var InformeR = FieldHeader[0].Split(new char[] { ' ' });
 
+            if (InformeR[1] == "200") { Message = "OK"; }
+            else if (InformeR[1] == "401") { Message = "unauthorized"; }
+            else { Console.WriteLine("NOK"); }
+        }
 
-            static string GETMessage()
-            {
+        static string GETMessage()
+        {
             string FYH = " ";
-            string HOST = "localhost";
-            int PORT = 3197;
-            string Serial = "NS002";
-            string PASSWORD = "1234";
 
             try
+            {
+                //connect
+                var client = new System.Net.Sockets.TcpClient();
+                //Send
+                client.Connect(HOST, PORT);
+                string MessageS = "GET /Reporte/GetDateTime/" + " HTTP/1.1\r\n" +
+                "Host:" + HOST + ":" + PORT.ToString() + "\r\n" +
+                "Cookie:" + CookieDisp + "\r\n" + "\r\n";
+
+                byte[] datOut = Encoding.UTF8.GetBytes(MessageS);
+                client.GetStream().Write(datOut, 0, datOut.Length);
+                //Espera
+                System.Threading.Thread.Sleep(1000);
+                //rec
+                if (client.Available > 0)
                 {
-                    var parameters = "?SERIALSENSOR=" + Serial+"&"+ "PASSWORD=" + PASSWORD;
-                    //connect
-                    var client = new System.Net.Sockets.TcpClient();
-                    //Send
-                    client.Connect(HOST, PORT);
-                    string MessageS = "GET /Reporte/GetDateTime/"+parameters+" HTTP/1.1\r\n" +
-                    "Host:"+ HOST+":"+PORT.ToString()+"\r\n" +
-                    "\r\n";
+                    Console.WriteLine("GET:===============================");
+                    byte[] datIn = new byte[client.Available];
+                    client.GetStream().Read(datIn, 0, datIn.Length);
+                    string responce = Encoding.UTF8.GetString(datIn);
+                    Console.WriteLine("Respuesta: \r\n" + responce);
+                    var Mensaje = responce.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None);
+                    var body = Mensaje[1];
+                    var head = Mensaje[0];
 
-
-                    byte[] datOut = Encoding.UTF8.GetBytes(MessageS);
-                    client.GetStream().Write(datOut, 0, datOut.Length);
-                    //Espera
-                    System.Threading.Thread.Sleep(1000);
-                    //rec
-                    if (client.Available > 0)
+                    Analisis(responce);
+                    if (!Message.Equals("unauthorized"))
                     {
-                    Console.WriteLine("GET:");
-                        byte[] datIn = new byte[client.Available];
-                        client.GetStream().Read(datIn, 0, datIn.Length);
-                        string responce = Encoding.UTF8.GetString(datIn);
-                        Console.WriteLine("Respuesta: \r\n" + responce);
-                        var Mensaje = responce.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None);
-                        var body = Mensaje[1];
-                        var head = Mensaje[0];
-
-                        //Cookie
-                        int index = head.IndexOf("Set-Cookie:");
-                        int indexedn = head.IndexOf("\r\n", index) - index-12;
-                        CookieDisp = head.Substring(index + 12, indexedn);
 
                         DateTime dt = DateTime.Parse(body);
-                        DateTime dt2 = dt.AddHours(0);
+                        DateTime dt2 = dt.AddHours(2);
+                        Comp1 = dt;
                         FYH = dt2.ToString();
                     }
-                    else
-                    {
-                        Console.WriteLine("Fallo Comunicación-Intente nuevamente:GET\r\n");
-                    }
-
-
-                    //Disconect
-                    client.Close();
-                    return FYH;
-
                 }
-                catch (Exception ex)
+                else
                 {
-                    Console.WriteLine("Error: " + ex.Message);
+                    Console.WriteLine("Fallo Comunicación-Intente nuevamente:GET\r\n");
                 }
 
+
+                //Disconect
+                client.Close();
                 return FYH;
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
             }
 
-            static void PUTMessage(string Date)
-            {
-            string HOST = "localhost";
-            int PORT = 3197;
-            string Serial = "NS002";
+            return FYH;
+        }
+
+        static bool PUTMessage(string Date)
+        {
+
             try
-                {
+            {
 
                 var ran = new Random();
 
@@ -124,64 +156,128 @@ namespace SimSensor
 
 
 
-                string Variable = "SERIALSENSOR=" + Serial + "&" + "MEDICION=" + ValueSensor.ToString() + 
-                                  "&" + "LATITUD=" + Latitud.ToString()+ "&" + "LONGITUD=" + Longitud.ToString()+
+                string Variable = "SERIALSENSOR=" + Serial + "&" + "MEDICION=" + ValueSensor.ToString() +
+                                  "&" + "LATITUD=" + Latitud.ToString() + "&" + "LONGITUD=" + Longitud.ToString() +
                                   "&" + "DATEREPORTED=" + Date;
 
-                    //connect
-                    var client = new System.Net.Sockets.TcpClient();
-                    //Send
-                    client.Connect(HOST, PORT);
-                    string MessageS = "POST /Reporte/PostData HTTP/1.1\r\n" +
-                    "Host:"+HOST+":"+PORT.ToString()+"\r\n" +
-                    "Cookie:"+ CookieDisp + "\r\n" +
-                    "Content-Type: application/x-www-form-urlencoded\r\n" +
-                    "Content-Length:" + Variable.Length.ToString() + "\r\n" +
-                    "\r\n" + Variable+ "\r\n";
+                //connect
+                var client = new System.Net.Sockets.TcpClient();
+                //Send
+                client.Connect(HOST, PORT);
+                string MessageS = "POST /Reporte/PostData HTTP/1.1\r\n" +
+                "Host:" + HOST + ":" + PORT.ToString() + "\r\n" +
+                "Cookie:" + CookieDisp + "\r\n" +
+                "Content-Type: application/x-www-form-urlencoded\r\n" +
+                "Content-Length:" + Variable.Length.ToString() + "\r\n" +
+                "\r\n" + Variable + "\r\n";
 
 
-                    byte[] datOut = Encoding.UTF8.GetBytes(MessageS);
-                    client.GetStream().Write(datOut, 0, datOut.Length);
-                    //Espera
-                    System.Threading.Thread.Sleep(2000);
-                    //rec
-                    if (client.Available > 0)
-                    {
-                        byte[] datIn = new byte[client.Available];
-                        client.GetStream().Read(datIn, 0, datIn.Length);
-                        string responce = Encoding.UTF8.GetString(datIn);
-                        Console.WriteLine("Respuesta: \r\n" + responce);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Fallo Comunicación-Intente nuevamente: PUT\r\n");
-                    }
-
-
-                    //Disconect
-                    client.Close();
-                    Console.WriteLine("Fin de la conexion... \r\n");
-
-                }
-                catch (Exception ex)
+                byte[] datOut = Encoding.UTF8.GetBytes(MessageS);
+                client.GetStream().Write(datOut, 0, datOut.Length);
+                //Espera
+                System.Threading.Thread.Sleep(2000);
+                //rec
+                if (client.Available > 0)
                 {
-                    Console.WriteLine("Error: " + ex.Message);
-                }
-            }
+                    Console.WriteLine("PUT:===============================");
+                    byte[] datIn = new byte[client.Available];
+                    client.GetStream().Read(datIn, 0, datIn.Length);
+                    string responce = Encoding.UTF8.GetString(datIn);
+                    Analisis(responce);
+                    var Mensaje = responce.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None);
+                    var body = Mensaje[1];
+                    var head = Mensaje[0];
 
-            static string ReadCookie(string Head)
+
+                    Console.WriteLine("Respuesta: \r\n" + responce);
+                }
+                else
+                {
+                    Console.WriteLine("Fallo Comunicación-Intente nuevamente: PUT\r\n");
+                }
+
+
+                //Disconect
+                client.Close();
+                Console.WriteLine("Fin de la conexion... \r\n");
+                return true;
+
+            }
+            catch (Exception ex)
             {
+                Console.WriteLine("Error: " + ex.Message);
+                return false;
+            }
+        }
+
+        static void ReadEXPCookie(string Head)
+        {
 
             int index = Head.IndexOf("Set-Cookie:");
-            int indexedn = Head.IndexOf("\n", index)-index;
+            int indexedn = Head.IndexOf("\n", index) - index;
             string CookieSend = Head.Substring(index + 12, indexedn);
-            var Cookie = CookieSend.Split(new string[] {";"}, StringSplitOptions.None);
-            var Parameters=Cookie[0].Split(new string[] { "=" }, StringSplitOptions.None);
-            var Exp = Cookie[1].Split(new string[] {"="}, StringSplitOptions.None);
-            var F_EXP= DateTime.ParseExact(Exp[1], "yyyy-mm-dd hh:mm:ss", null);
-           
-            return CookieSend;
+            var Cookie = CookieSend.Split(new string[] { ";" }, StringSplitOptions.None);
+            var Exp = Cookie[1].Split(new string[] { "=" }, StringSplitOptions.None);
+            var Fecha = Exp[1].Split(new string[] { "," }, StringSplitOptions.None);
+            var FechaF = Fecha[1].Split(new string[] { " " }, StringSplitOptions.None);
+            Comp = DateTime.ParseExact(FechaF[2], "hh:mm:ss", null).AddHours(-3).AddDays(1);
+        }
+
+        static void GETLogin()
+        {
+            try
+            {
+                var parameters = "?SERIALSENSOR=" + Serial + "&" + "PASSWORD=" + PASSWORD;
+                //connect
+                var client = new System.Net.Sockets.TcpClient();
+                //Send
+                client.Connect(HOST, PORT);
+                string MessageS = "GET /Reporte/GetLogin/" + parameters + " HTTP/1.1\r\n" +
+                "Host:" + HOST + ":" + PORT.ToString() + "\r\n" + "\r\n";
+
+                byte[] datOut = Encoding.UTF8.GetBytes(MessageS);
+                client.GetStream().Write(datOut, 0, datOut.Length);
+                //Espera
+                System.Threading.Thread.Sleep(2000);
+                //rec
+                if (client.Available > 0)
+                {
+                    Console.WriteLine("GET-Login:===============================");
+                    byte[] datIn = new byte[client.Available];
+                    client.GetStream().Read(datIn, 0, datIn.Length);
+                    string responce = Encoding.UTF8.GetString(datIn);
+                    Console.WriteLine("Respuesta: \r\n" + responce);
+                    var Mensaje = responce.Split(new string[] { "\r\n\r\n" }, StringSplitOptions.None);
+                    var body = Mensaje[1];
+                    var head = Mensaje[0];
+
+                    Analisis(responce);
+
+                    //Cookie
+
+                    int index = head.IndexOf("Set-Cookie:");
+                    int indexedn = head.IndexOf("\r\n", index) - index - 12;
+                    CookieDisp = head.Substring(index + 12, indexedn);
+                    ReadEXPCookie(head);
+
+                }
+                else
+                {
+                    Console.WriteLine("Fallo Comunicación-Intente nuevamente:GET-Login\r\n");
+                }
+
+
+                //Disconect
+                client.Close();
+
+
             }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+
+        }
 
     }
 }

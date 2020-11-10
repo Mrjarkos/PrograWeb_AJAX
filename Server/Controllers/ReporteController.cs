@@ -134,6 +134,7 @@ namespace Server.Controllers
         }
 
         [HttpPost]
+        [Seguridad.FiltroAut]
         public ActionResult Modificar(Models.Reporte reporte)
         {
             int id = reporte.ID;
@@ -183,8 +184,8 @@ namespace Server.Controllers
         {
             try
             {
-                DateTime fechayhora = DateTime.Now;
-                DateTime dateTime = DateTime.Now;
+                DateTime fechayhora = DateTime.Now.AddHours(2);
+                DateTime dateTime = DateTime.Now.AddHours(2);
 
                 using (var context = new DatosEntities())
                 {
@@ -209,7 +210,7 @@ namespace Server.Controllers
         }
 
         [HttpGet]
-        public string GetDateTime(string SERIALSENSOR, int PASSWORD)
+        public string GetLogin(string SERIALSENSOR, int PASSWORD)
         {
             try
             {
@@ -223,14 +224,14 @@ namespace Server.Controllers
 
                             //Cookie
                             string infoCookie = "DispositivoValido";
-                            var Expire = DateTime.Now.AddMinutes(10);
+                            var Expire = DateTime.Now.AddMinutes(5);
                             HttpCookie cookie = new HttpCookie(infoCookie);
                             cookie["ID"] = u.ID.ToString();
                             cookie["NSerial"] = u.SERIAL.ToString();
                             cookie.Expires = Expire;
                             HttpContext.Response.Cookies.Add(cookie);
 
-                            return DateTime.Now.ToString();
+                            return "Autenticación Exitosa";
                         }
                     }
                     throw new Exception("Serial de Dispositivo reportado desconocido");
@@ -240,6 +241,13 @@ namespace Server.Controllers
             {
                 return "Transacción Rechazada-" + ex.Message;
             }
+        }
+
+        [HttpGet]
+        [Seguridad.FiltroDisp]
+        public string GetDateTime()
+        {
+            return DateTime.Now.ToString();
         }
 
         [HttpGet]
