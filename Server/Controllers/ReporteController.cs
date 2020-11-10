@@ -184,8 +184,8 @@ namespace Server.Controllers
         {
             try
             {
-                DateTime fechayhora = DateTime.Now.AddHours(2);
-                DateTime dateTime = DateTime.Now.AddHours(2);
+                DateTime fechayhora = DateTime.Now.AddHours(0);
+                DateTime dateTime = DateTime.Now.AddHours(0);
 
                 using (var context = new DatosEntities())
                 {

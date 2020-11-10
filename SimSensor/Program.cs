@@ -118,7 +118,7 @@ namespace SimSensor
                     {
 
                         DateTime dt = DateTime.Parse(body);
-                        DateTime dt2 = dt.AddHours(2);
+                        DateTime dt2 = dt.AddHours(0);
                         Comp1 = dt;
                         FYH = dt2.ToString();
                     }
