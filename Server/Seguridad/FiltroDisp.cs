@@ -35,7 +35,7 @@ namespace Server.Seguridad
         {
             if (filterContext.Result == null || filterContext.Result is HttpUnauthorizedResult)
             {
-                filterContext.Result = new RedirectResult("/Login/Login", false);
+                filterContext.Result = new RedirectResult("/Login/Error", false);
             }
         }
     }

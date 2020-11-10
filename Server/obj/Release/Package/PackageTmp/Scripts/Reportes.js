@@ -1,14 +1,17 @@
 ﻿window.onload = function () {
     PedirDatos();
+    //Graficar(registros);
     id_search.addEventListener('keyup', function () { PedirDatos() });
     id_sensor_search.addEventListener('keyup', function () { PedirDatos() });
     medicion_search.addEventListener('keyup', function () { PedirDatos() });
     longitud_search.addEventListener('keyup', function () { PedirDatos() });
     latitud_search.addEventListener('keyup', function () { PedirDatos() });
-    Reported_search.addEventListener('keyup', function () { PedirDatos() });
-    Modificacion_search.addEventListener('keyup', function () { PedirDatos() });
+    Date_init_search.addEventListener('change', function () { PedirDatos() });
+    Date_final_search.addEventListener('change', function () { PedirDatos() });
     N_items_select.addEventListener('change', function () { PedirDatos() });
 
+    grafic_bnt.addEventListener('click', function () { Get_Plot_Data() });
+    filter_bnt.addEventListener('click', function () { BorrarFiltros() });
     B0.addEventListener('click', function () { PedirDatos(B0.value) });
     B1.addEventListener('click', function () { PedirDatos(B1.value) });
     B2.addEventListener('click', function () { PedirDatos(B2.value) });
@@ -39,8 +42,9 @@ function PedirDatos(page) {
     var parameters = "?id_search=" + id_search.value + "&" + "id_sensor_search=" + id_sensor_search.value +
         "&" + "medicion_search=" + medicion_search.value + "&" + "latitud_search=" + latitud_search.value +
         "&" + "longitud_search=" + longitud_search.value + 
-        "&" + "Reported_search=" + Reported_search.value + "&" + "Modificacion_search=" + Modificacion_search.value +
+        "&" + "Date_init_search=" + formatted_date_time(Date_init_search.value) + "&" + "Date_final_search=" + formatted_date_time(Date_final_search.value) +
         "&" + "Page=" + page + "&" + "N_items=" + N_items_select.value;
+    console.log(parameters);
     var xh = new XMLHttpRequest();
     xh.open("GET", "/Reporte/GetRegister" + parameters, true)
     xh.responseType = "json";
@@ -57,11 +61,20 @@ function PedirDatos(page) {
         }
     }
     xh.send();
+}
 
+function formatted_date_time(value) {
+    if (value == "") {
+        return "";
+    }
+    value = value.replaceAll("-", "/")
+    value = value.split("T")
+    value = value[0] + " " + value[1] + ":00"
+    return value
 }
 
 function ListRegister(Registros) {
-
+    
     for (i = 0; i < Registros["Registros"].length; i++) {
         row = myTable.insertRow();
         cell = row.insertCell(0);
@@ -75,44 +88,17 @@ function ListRegister(Registros) {
         cell = row.insertCell(4);
         cell.innerHTML = Registros["Registros"][i].LONGITUD.toString();
         cell = row.insertCell(5);
+        cell.colSpan = "2";
         var value = new Date(parseInt(Registros["Registros"][i].DATEREPORTED.substr(6)));
         cell.innerHTML = formatted_date(value);
-        cell = row.insertCell(6);
-        var value = new Date(parseInt(Registros["Registros"][i].DATELASTMODIFICATION.substr(6)));
-        cell.innerHTML = formatted_date(value);
-
-        cell = row.insertCell(7);
-        var form = document.createElement('form');
-        form.action = "/Reporte/Modify";
-        form.method = "post";
-        var button = document.createElement('button');
-        button.className = "btn btn-warning glyphicon glyphicon-pencil";
-        button.type = "submit";
-        button.name = "Id";
-        button.value = Registros["Registros"][i].ID.toString();
-        button.id = i;
-        form.appendChild(button)
-        cell.appendChild(form);
-
-        cell = row.insertCell(8);
-        var form = document.createElement('form');
-        form.action = "/Reporte/Delete";
-        form.method = "post";
-        var button = document.createElement('button');
-        button.className = "btn btn-danger glyphicon glyphicon-remove";
-        button.type = "submit";
-        button.name = "Id";
-        button.value = Registros["Registros"][i].ID.toString();
-        button.id = i;
-        form.appendChild(button)
-        cell.appendChild(form);
-
+        
+        
         Paginas(parseInt(Registros["PaginaActual"]), parseInt(Registros["TotalPaginas"]));
     }
 }
 
 function formatted_date(value) {
-    return value.getFullYear() + "/" + ("0" + value.getMonth()).slice(-2) + "/" + ("0" + value.getDate()).slice(-2) + " " + ("0" + value.getHours()).slice(-2) + ":" + ("0" + value.getMinutes()).slice(-2) + ":" + ("0" + value.getSeconds()).slice(-2);
+    return ("0" + (value.getMonth()+1)).slice(-2) + "/" + ("0" + value.getDate()).slice(-2) + "/" + value.getFullYear() + " " + ("0" + value.getHours()).slice(-2) + ":" + ("0" + value.getMinutes()).slice(-2) + ":" + ("0" + value.getSeconds()).slice(-2);
 }
 
 function Paginas(PA, PT) {
@@ -161,4 +147,111 @@ function Hide() {
     B5.style.display = "none";
     BN.style.display = "none";
     Bfollow.style.display = "none";
+}
+
+function BorrarFiltros() {
+    id_search.value = "";
+    id_sensor_search.value = "";
+    medicion_search.value = "";
+    longitud_search.value = "";
+    latitud_search.value = "";
+    Date_init_search.value = "";
+    Date_final_search.value = "";
+    PedirDatos();
+}
+
+function Get_Plot_Data() {
+    var parameters = "?id_search=" + id_search.value + "&" + "id_sensor_search=" + id_sensor_search.value +
+        "&" + "medicion_search=" + medicion_search.value + "&" + "latitud_search=" + latitud_search.value +
+        "&" + "longitud_search=" + longitud_search.value +
+        "&" + "Date_init_search=" + Date_init_search.value + "&" + "Date_final_search=" + Date_final_search.value;
+    var xh = new XMLHttpRequest();
+    xh.open("GET", "/Reporte/GetPlotData" + parameters, true)
+    xh.responseType = "json";
+    xh.onreadystatechange = function () {
+        if (xh.readyState == 4) {
+            console.log(xh.status);
+            if (xh.status == 200) {
+                console.log('OK');
+                Graficar(xh.response)
+            }
+            else {
+                console.log('Error');
+            }
+        }
+    }
+    xh.send();
+}
+
+function Graficar(Registros) {
+    var x = [];
+    var y = [];
+    for (i = 0; i < Registros["datos"].length; i++) {
+        var value = new Date(parseInt(Registros["datos"][i].x.substr(6)));
+        x.push(formatted_date(value));
+        y.push(Registros["datos"][i].y);
+    }
+    var config = {
+        type: 'line',
+        data: {
+            labels: x,
+            datasets: [{
+                label: 'Ruido Promedio por hora',
+                backgroundColor: window.chartColors.blue,
+                borderColor: window.chartColors.blue,
+                data: y,
+                fill: false,
+            }]
+                }, 
+        options: {
+            responsive: true,
+            legend: {
+                labels: {
+                    fontColor: "#FFFFFF"
+                }
+            },
+            title: {
+                display: true,
+                text: 'Serie de Tiempo de Ruido Reportado por sensores',
+                fontColor: "#FFFFFF"
+            },
+            tooltips: {
+                mode: 'index',
+                intersect: false,
+            },
+            hover: {
+                mode: 'nearest',
+                intersect: true
+            },
+            scales: {
+                xAxes: [{
+                    display: true,
+                    fontColor: "#FFFFFF",
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Month'
+                    },
+                    ticks: {
+                        fontColor: "#FFFFFF",
+                        beginAtZero: true
+                    }
+                }],
+                yAxes: [{
+                    display: true,
+                    fontColor: "#FFFFFF",
+                    scaleLabel: {
+                        display: true,
+                        labelString: 'Value'
+                    },
+                    ticks: {
+                        fontColor: "#FFFFFF",
+                        beginAtZero: true
+                    }
+                }]
+            }
+        }
+    };
+    var ctx = document.getElementById('canvas').getContext('2d');
+    window.myLine = new Chart(ctx, config);
+    var colorNames = Object.keys(window.chartColors);
 }

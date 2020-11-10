@@ -21,8 +21,8 @@ namespace SimSensor
         static void Main(string[] args)
         {
 
-            HOST = "localhost";
-            PORT = 3197;
+            HOST = "mrjarkos-001-site1.itempurl.com";
+            PORT = 80;
             Serial = "NS185";
             PASSWORD = "1234";
 

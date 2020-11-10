@@ -6,8 +6,11 @@
     number_search.addEventListener('keyup', function () { PedirDatos() });
     email_search.addEventListener('keyup', function () { PedirDatos() });
     rol_search.addEventListener('change', function () { PedirDatos() });
+    Modificacion_search.addEventListener('keyup', function () { PedirDatos() });
+    Creacion_search.addEventListener('keyup', function () { PedirDatos() });
     N_items_select.addEventListener('change', function () { PedirDatos() });
 
+    filter_bnt.addEventListener('click', function () { BorrarFiltros() });
     B0.addEventListener('click', function () { PedirDatos(B0.value) });
     B1.addEventListener('click', function () { PedirDatos(B1.value) });
     B2.addEventListener('click', function () { PedirDatos(B2.value) });
@@ -55,8 +58,20 @@ function PedirDatos(page) {
         }
     }
     xh.send();
-
 }
+
+function BorrarFiltros() {
+    id_search.value = "";
+    id_user_search.value = "";
+    document_search.value = "";
+    number_search.value = "";
+    email_search.value = "";
+    rol_search.value = "";
+    Creacion_search.value = "";
+    Modificacion_search.value = "";
+    PedirDatos();
+}
+
 
 function ListRegister(Registros) {
 
@@ -112,7 +127,7 @@ function ListRegister(Registros) {
 }
 
 function formatted_date(value) {
-    return value.getFullYear() + "/" + ("0" + value.getMonth()).slice(-2) + "/" + ("0" + value.getDate()).slice(-2) + " " + ("0" + value.getHours()).slice(-2) + ":" + ("0" + value.getMinutes()).slice(-2) + ":" + ("0" + value.getSeconds()).slice(-2);
+    return ("0" + (value.getMonth() + 1)).slice(-2) + "/" + ("0" + value.getDate()).slice(-2) + "/" + value.getFullYear() + " " + ("0" + value.getHours()).slice(-2) + ":" + ("0" + value.getMinutes()).slice(-2) + ":" + ("0" + value.getSeconds()).slice(-2);
 }
 
 function Paginas(PA, PT) {

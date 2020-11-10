@@ -1554,6 +1554,7 @@
     <Content Include="Views\Reporte\Add.cshtml" />
     <Content Include="Views\Reporte\Delete.cshtml" />
     <Content Include="Views\Reporte\Modify.cshtml" />
+    <Content Include="Views\Login\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

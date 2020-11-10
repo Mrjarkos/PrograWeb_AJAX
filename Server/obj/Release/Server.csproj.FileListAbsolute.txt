@@ -119,3 +119,21 @@ C:\Users\willi\Source\Repos\PrograWeb_AJAX\Server\obj\Release\Server.csproj.Copy
 C:\Users\willi\Source\Repos\PrograWeb_AJAX\Server\obj\Release\Server.dll
 C:\Users\willi\Source\Repos\PrograWeb_AJAX\Server\obj\Release\Server.pdb
 D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Device.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Microsoft.Bcl.AsyncInterfaces.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Buffers.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Memory.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Numerics.Vectors.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Runtime.CompilerServices.Unsafe.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Text.Encodings.Web.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Text.Json.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Threading.Tasks.Extensions.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.ValueTuple.dll
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\Microsoft.Bcl.AsyncInterfaces.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Buffers.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Memory.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Numerics.Vectors.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Runtime.CompilerServices.Unsafe.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Text.Encodings.Web.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Text.Json.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.Threading.Tasks.Extensions.xml
+D:\Universidad\8 SEMESTRE\Programación Web\Laboratorios\PrograWeb_AJAX\Server\bin\System.ValueTuple.xml

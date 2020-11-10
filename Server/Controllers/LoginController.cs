@@ -14,10 +14,26 @@ namespace Server.Controllers
             return View();
         }
 
+        public ActionResult Logout()
+        {
+            if (Request.Cookies["SesionValida"] != null)
+            {
+                var c = new HttpCookie("SesionValida");
+                c.Expires = DateTime.Now.AddDays(-1);
+                Response.Cookies.Add(c);
+            }
+            return View("Login");
+        }
+
         public ActionResult Cuenta_nueva()
         {
             return View();
         }
+        public ActionResult Error()
+        {
+            return View();
+        }
+
         [HttpPost]
         public ActionResult Guardar(Models.Usuario usuario)
         {

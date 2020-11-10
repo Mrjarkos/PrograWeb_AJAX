@@ -139,13 +139,21 @@ namespace Server.Controllers
                 {
                     using (var context = new DatosEntities())
                     {
-                        var us = context.USUARIOS.ToArray();
-                        foreach (var u in us)
+                        var user_ant = (from q in context.USUARIOS
+                                    where q.CORREO == usuario.CORREO
+                                        select q).FirstOrDefault();
+                        if (user_ant != null) {
+                            throw new Exception("No se pudo agregar usuario a la base de datos, Correo ya existe");
+                        }
+                        var admins = (from q in context.USUARIOS
+                                        where q.ROL == "ADMINISTRADOR"
+                                      select q).ToList();
+                        if (admins.Count >= 5 && usuario.ROL== "ADMINISTRADOR") {
+                            throw new Exception("No se pudo agregar usuario a la base de datos, Demasiados Administradores");
+                        }
+                        if (admins.Count >= 50 && usuario.ROL == "MONITOR")
                         {
-                            if (u.CORREO==usuario.CORREO)
-                            {
-                                throw new Exception("No se pudo agregar usuario a la base de datos, Correo ya existe");
-                            }
+                            throw new Exception("No se pudo agregar usuario a la base de datos,  Demasiados Monitores");
                         }
                         context.USUARIOS.Add(new USUARIOS
                         {
